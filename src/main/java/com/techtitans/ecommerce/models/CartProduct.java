@@ -24,7 +24,20 @@ public class CartProduct {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    private Integer quantity;
+
     public CartProduct() {
+    }
+    public CartProduct(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public ShoppingCart getShoppingCart() {

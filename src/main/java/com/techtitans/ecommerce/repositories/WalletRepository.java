@@ -7,5 +7,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource
 public interface WalletRepository extends JpaRepository<Wallet, Long> {
 
-
+    Wallet findByNumber(String number);
 }

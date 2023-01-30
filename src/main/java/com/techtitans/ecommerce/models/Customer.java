@@ -35,7 +35,7 @@ public class Customer {
 
     private String phoneNumber;
 
-    @OneToOne(mappedBy = "customer", fetch = EAGER)
+    @OneToOne(fetch = EAGER)
     @JoinColumn(name = "wallet_id")
     private Wallet wallet;
 

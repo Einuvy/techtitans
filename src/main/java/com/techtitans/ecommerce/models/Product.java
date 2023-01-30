@@ -34,7 +34,7 @@ public class Product {
     private Set<String> categories = new HashSet<>();
 
     @OneToMany(mappedBy = "product")
-    private Set<CartProduct> cartProducts;
+    private Set<CartProduct> cartProducts = new HashSet<>();
     public Product() {
     }
 
@@ -42,7 +42,6 @@ public class Product {
                    Double price,
                    String code,
                    String description,
-                   Boolean deleted,
                    Integer stock,
                    String brand,
                    Set<String> categories) {
@@ -50,7 +49,7 @@ public class Product {
         this.price = price;
         this.code = code;
         this.description = description;
-        this.deleted = deleted;
+        this.deleted = false;
         this.stock = stock;
         this.brand = brand;
         this.categories = categories;
@@ -122,5 +121,17 @@ public class Product {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public Set<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<String> categories) {
+        this.categories = categories;
+    }
+
+    public Set<CartProduct> getCartProducts() {
+        return cartProducts;
     }
 }

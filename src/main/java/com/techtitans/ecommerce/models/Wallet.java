@@ -1,6 +1,5 @@
 package com.techtitans.ecommerce.models;
 
-import com.techtitans.ecommerce.enums.PaymentType;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -19,11 +18,11 @@ public class Wallet {
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
-    private String walletNumber;
+    private String number;
 
     private Double balance;
 
-    @OneToOne(mappedBy = "wallet", fetch = EAGER)
+    @OneToOne(fetch = EAGER)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
@@ -33,14 +32,13 @@ public class Wallet {
     public Wallet() {
     }
 
-    public Wallet(String walletNumber,
-                  PaymentType depositMethod,
+    public Wallet(String number,
                   Double balance) {
-        this.walletNumber = walletNumber;
+        this.number = number;
         this.balance = balance;
     }
 
-    public void addWallet(ShoppingCart shoppingCart){
+    public void addShoppingCart(ShoppingCart shoppingCart){
         shoppingCart.setWallet(this);
         shoppingCarts.add(shoppingCart);
     }
@@ -49,12 +47,12 @@ public class Wallet {
         return id;
     }
 
-    public String getWalletNumber() {
-        return walletNumber;
+    public String getNumber() {
+        return number;
     }
 
-    public void setWalletNumber(String walletNumber) {
-        this.walletNumber = walletNumber;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public Double getBalance() {

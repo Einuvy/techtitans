@@ -1,6 +1,5 @@
 package com.techtitans.ecommerce.models;
 
-import com.techtitans.ecommerce.enums.OrderStatus;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -11,6 +10,7 @@ import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
+@Table(name = "ticket")
 public class Order {
     @Id
     @GeneratedValue(strategy = AUTO, generator = "native")
@@ -18,8 +18,6 @@ public class Order {
     private Long id;
 
     private Double total;
-
-    private OrderStatus status;
 
     private String adress;
 
@@ -33,7 +31,7 @@ public class Order {
 
     private String sellerCUIT;
 
-    @OneToOne(mappedBy = "order", fetch = EAGER)
+    @OneToOne(fetch = EAGER)
     @JoinColumn(name = "shopping_cart_id")
     private ShoppingCart shoppingCart;
 
@@ -123,14 +121,4 @@ public class Order {
     public void setShoppingCart(ShoppingCart shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
-
-    public OrderStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(OrderStatus status) {
-        this.status = status;
-    }
-
-
 }

@@ -6,8 +6,10 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
+import static javax.persistence.EnumType.STRING;
 import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.AUTO;
 
@@ -23,6 +25,7 @@ public class ShoppingCart {
 
     private LocalDateTime creationDate;
 
+    @Enumerated(STRING)
     private PaymentType paymentMethod;
 
     private Boolean aprobated;
@@ -34,10 +37,10 @@ public class ShoppingCart {
     private Wallet wallet;
 
     @OneToMany(mappedBy = "shoppingCart")
-    private Set<CartProduct> cartProducts;
+    private Set<CartProduct> cartProducts = new HashSet<>();
 
-    @OneToOne(mappedBy = "shoppingCart", fetch = EAGER)
-    @JoinColumn(name = "order_id")
+    @OneToOne(fetch = EAGER)
+    @JoinColumn(name = "ticket_id")
     private Order order;
 
     public ShoppingCart() {
@@ -45,12 +48,11 @@ public class ShoppingCart {
 
     public ShoppingCart(String operationCode,
                         LocalDateTime creationDate,
-                        PaymentType paymentMethod,
-                        Double total) {
+                        PaymentType paymentMethod) {
         this.operationCode = operationCode;
         this.creationDate = creationDate;
         this.paymentMethod = paymentMethod;
-        this.total = total;
+        this.aprobated= false;
     }
 
     public void addOrder(Order oerder){
@@ -61,6 +63,10 @@ public class ShoppingCart {
     public void addCartProduct(CartProduct cartProduct){
         cartProduct.setShoppingCart(this);
         cartProducts.add(cartProduct);
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getOperationCode() {
@@ -101,5 +107,29 @@ public class ShoppingCart {
 
     public void setWallet(Wallet wallet) {
         this.wallet = wallet;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    public Set<CartProduct> getCartProducts() {
+        return cartProducts;
+    }
+
+    public void setCartProducts(Set<CartProduct> cartProducts) {
+        this.cartProducts = cartProducts;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }
