@@ -628,6 +628,88 @@ form input:focus{
   background-color: transparent !important;
 }
 
+/* ///////////////////////////////////CAROUSELL///////////////////////////////////////// */
+
+.carousel-item img {
+  height: 600px;
+  width: 75%;
+  box-shadow: inset -73px -10px 52px -35px rgba(0, 0, 0, 1);
+  z-index: 1;
+}
+
+.carouselItemText {
+  color: white;
+  width: 25%;
+  background-color: #000000;
+  z-index: 2;
+  box-shadow: -35px -1px 31px 14px rgba(0, 0, 0, 1);
+}
+
+/* ////////////////////////carousel btn/////////////////////// */
+
+.btn_container {
+  display: inline-flex;
+  color: white;
+  position: relative;
+  align-items: center;
+  place-content: center;
+}
+
+.btn {
+  color: white;
+  text-align: center;
+  display: flex;
+  gap: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  padding: 10px 20px 10px 20px;
+  z-index: 3;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+}
+
+.btn_container .svgStroke {
+  position: absolute;
+  z-index: 1;
+  width: 300px;
+}
+
+.btn_container .svgStroke path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: -800;
+  stroke-width: 2;
+  transition: all 1s ease-in-out;
+}
+
+@keyframes dash {
+  0% {
+      stroke-dasharray: 100;
+      stroke-width: 2;
+  }
+
+  50% {
+      stroke-width: 4;
+      stroke: paleturquoise;
+      filter: drop-shadow(0px 0px 3px rgb(255, 226, 131)) drop-shadow(0px 0px 20px white) drop-shadow(0px 0px 150px white);
+  }
+
+  100% {
+      stroke-dashoffset: 800;
+      stroke-width: 2;
+  }
+}
+
+.btn:hover+.svgStroke path {
+  cursor: pointer;
+  animation: dash 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btn:hover {
+  font-size: 0.9rem;
+  color: white;
+}
 
 /* Query */
 
