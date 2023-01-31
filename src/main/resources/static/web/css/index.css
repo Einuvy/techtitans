@@ -38,7 +38,7 @@ body {
 
 header {
     width: 100% !important;
-    
+    height: 10vh;
 }
   
 #index {
@@ -52,6 +52,22 @@ header {
       background-attachment: fixed;
   
   
+}
+
+.carouselProduct {
+  margin: 8rem;
+  height: auto;
+  border-top: #f0f9ff 1px solid;
+  border-bottom: #f0f9ff 1px solid;
+}
+/* .card-text-product {
+  background-color: transparent !important;
+  backdrop-filter: blur(7px) !important;
+
+} */
+
+.carousel {
+  transition: 1s !important;
 }
   
 .text-white-bold {
