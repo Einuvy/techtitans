@@ -81,7 +81,7 @@
         
         </header>
         
-        <main class="d-flex flex-column justify-content-center align-items-center ">
+        <main class="d-flex flex-column justify-content-start align-items-center gap-3">
             <!-- Modal -->
           <div class="modal fade modal-style" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-style-radius">
@@ -146,14 +146,16 @@
             </h3>
             <div class="scrollBtnCont" id="scrolling">
               <a class="titleScroll" href="#carouselExampleSlidesOnly">
-                <p class="btnText">SEE MORE</p>
-                <div class="scrollIcon"></div>
+                <p class="btnText text-white-bold ">SEE MORE</p>
+                <div class="scrollIcon">
+                    
+                </div>
               </a>
             </div>
             
         </main>
-        <div data-bs-spy="scroll" data-bs-target="#scrolling" class="carouselProduct">
-          <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div data-bs-spy="scroll" data-bs-target="#scrolling" class="">
+          <div id="carouselExampleSlidesOnly" class="carousel slide carouselProduct" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="d-flex">

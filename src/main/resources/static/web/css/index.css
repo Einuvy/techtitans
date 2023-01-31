@@ -34,6 +34,7 @@ body {
     /* background-image: url(https://img.freepik.com/free-vector/futuristic-technological-wallpaper_79603-1093.jpg?w=1060&t=st=1674498066~exp=1674498666~hmac=28c9540e216306cf7a13ffefff669e98d85725438bd3f88a5d1d77bfcbd6e676) ; */
     /* background-image: url(https://images.wallpapersden.com/image/download/run-with-tech_a2tuZmWUmZqaraWkpJRnbW1lrWZtZWU.jpg); */
     height: 100vh;
+    /* border: 1px solid #f30606 !important; */
 }
 
 header {
@@ -55,7 +56,7 @@ header {
 }
 
 .carouselProduct {
-  margin: 8rem;
+  margin: 1rem;
   height: auto;
   border-top: #f0f9ff 1px solid;
   border-bottom: #f0f9ff 1px solid;
@@ -143,16 +144,17 @@ header {
   height: 4rem;
 }
 
-.scrollBtnCont{
+/* .scrollBtnCont{
   position: absolute;
   bottom: 60px;
-}
+} */
 
 .scrollIcon{
   width: 100%;
   height: 100%;
   background: url(https://cdn.iconfinder.com/stored_data/842316/128/png?token=1675193511-qg8bX0rocxExEiUjlLTnK3EHzD96Va%2BCybDjPJA8EZY%3D) no-repeat 24px -16px;
       background-size: 57px;
+      
 }
 
 .modal-style-radius {
