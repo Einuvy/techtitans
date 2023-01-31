@@ -7,7 +7,8 @@ const admin = createApp({
         //    login: true, 
          clients: {},
          InputSearch: "",
-         clientFilter: []
+         clientFilter: [],
+         images: []
 
         }
     },
