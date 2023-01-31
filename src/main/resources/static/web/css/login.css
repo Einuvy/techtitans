@@ -33,7 +33,7 @@ body {
 }
 
 #login {
-    background-image: url(https://img.freepik.com/free-photo/medium-shot-man-wearing-vr-glasses_23-2149126949.jpg?w=1380&t=st=1674498313~exp=1674498913~hmac=660f3bc9072b80dff2bcf3bf2509577409e0245ff6786d944ae08fefeef2bee1);
+    background-image: url(../images/login-image.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
