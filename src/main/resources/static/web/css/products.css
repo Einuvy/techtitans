@@ -1,0 +1,205 @@
+/* ////////////////////////Cards/////////////////////////////// */
+.cardCont {
+    color: white;
+    width: 350px;
+    background-color: #282d32;
+    /* border-radius: 1rem 1rem 1rem 1rem; */
+}
+
+.cardBorder {
+    background: rgb(213, 64, 254);
+    background: linear-gradient(90deg, rgba(213, 64, 254, 1) 0%, rgba(69, 235, 255, 1) 51%, rgba(129, 81, 251, 1) 91%);
+    width: fit-content;
+    box-shadow: 2px 1px 10px 3px rgba(0, 0, 0, 0.75);
+    padding: .7px;
+    /* border-radius: 1rem 1rem 1rem 1rem; */
+}
+
+.cardBody {
+    padding: 1rem;
+}
+
+.cardImage img {
+    max-width: 350px;
+    /* border-radius: 1rem 1rem 0rem 0rem; */
+}
+
+.cardButtons {
+    padding: 1rem;
+}
+
+td {
+    background-color: #2f363c;
+}
+
+/* //////////////////////Filter cont/////////////////////////////// */
+.filter {
+    color: #ccc;
+}
+
+.form-select {
+    background-color: #282d32;
+    color: #ccc;
+    border: 1px solid rgb(102, 0, 255);
+    width: 200px;
+}
+
+/* ////////////////////////searchbar//////////////////////////////// */
+#Buscador {
+    background: url(https://cdn.iconfinder.com/stored_data/842013/128/png?token=1675182392-w2%2FFpXBe9NQrH2%2F14nhEQJ1wKhqyOCPJjS8oqRkw47w%3D) no-repeat 0px 8px;
+    background-size: 25px;
+    width: 500px;
+    color: #ccc;
+    border: transparent;
+    border-bottom: solid 1px #ccc;
+    padding: 10px 10px 10px 30px;
+    outline: none;
+}
+
+/* ///////////////////Card containers////////////////////////////////////////// */
+.productCont {
+    background-color: #282d32;
+}
+
+.filterCont {
+    background-color: #2f363c;
+}
+
+/* ////////////////////////////cardbtn//////////////////////////////////////////// */
+button,
+button::after {
+    width: 120px;
+    height: 30px;
+    font-size: 13px;
+    font-family: 'Bebas Neue', cursive;
+    background: linear-gradient(45deg, transparent 5%, #500eb3 5%);
+    border: 0;
+    color: #fff;
+    letter-spacing: 3px;
+    line-height: 10px;
+    box-shadow: 6px 0px 0px #00E6F6;
+    outline: transparent;
+    position: relative;
+}
+
+button::after {
+    --slice-0: inset(50% 50% 50% 50%);
+    --slice-1: inset(80% -6px 0 0);
+    --slice-2: inset(50% -6px 30% 0);
+    --slice-3: inset(10% -6px 85% 0);
+    --slice-4: inset(40% -6px 43% 0);
+    --slice-5: inset(80% -6px 5% 0);
+
+    content: 'VIEW DETAILS';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #500eb3 5%);
+    text-shadow: -3px -3px 0px #0546f8, 3px 3px 0px #00E6F6;
+    clip-path: var(--slice-0);
+}
+
+button:hover::after {
+    animation: 1s glitch;
+    animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+    0% {
+        clip-path: var(--slice-1);
+        transform: translate(-20px, -10px);
+    }
+
+    10% {
+        clip-path: var(--slice-3);
+        transform: translate(10px, 10px);
+    }
+
+    20% {
+        clip-path: var(--slice-1);
+        transform: translate(-10px, 10px);
+    }
+
+    30% {
+        clip-path: var(--slice-3);
+        transform: translate(0px, 5px);
+    }
+
+    40% {
+        clip-path: var(--slice-2);
+        transform: translate(-5px, 0px);
+    }
+
+    50% {
+        clip-path: var(--slice-3);
+        transform: translate(5px, 0px);
+    }
+
+    60% {
+        clip-path: var(--slice-4);
+        transform: translate(5px, 10px);
+    }
+
+    70% {
+        clip-path: var(--slice-2);
+        transform: translate(-10px, 10px);
+    }
+
+    80% {
+        clip-path: var(--slice-5);
+        transform: translate(20px, -10px);
+    }
+
+    90% {
+        clip-path: var(--slice-1);
+        transform: translate(-10px, 0px);
+    }
+
+    100% {
+        clip-path: var(--slice-1);
+        transform: translate(0);
+    }
+}
+
+.detailBtn, .detailBtn::after {
+    width: 120px;
+    height: 30px;
+    font-size: 13px;
+    font-family: 'Bebas Neue', cursive;
+    background: linear-gradient(45deg, transparent 5%, #5b4781 5%);
+    border: 0;
+    color: #fff;
+    letter-spacing: 3px;
+    line-height: 10px;
+    box-shadow: 6px 0px 0px #00E6F6;
+    outline: transparent;
+    position: relative;
+  }
+  
+  .detailBtn::after {
+    --slice-0: inset(50% 50% 50% 50%);
+    --slice-1: inset(80% -6px 0 0);
+    --slice-2: inset(50% -6px 30% 0);
+    --slice-3: inset(10% -6px 85% 0);
+    --slice-4: inset(40% -6px 43% 0);
+    --slice-5: inset(80% -6px 5% 0);
+    
+    content: 'VIEW DETAILS';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #5b4781  5%);
+    text-shadow: -3px -3px 0px #0546f8, 3px 3px 0px #00E6F6;
+    clip-path: var(--slice-0);
+  }
+  
+  button:hover::after {
+    animation: 1s glitch;
+    animation-timing-function: steps(2, end);
+  }
