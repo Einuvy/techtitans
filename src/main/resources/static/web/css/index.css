@@ -41,6 +41,29 @@ header {
     width: 100% !important;
     height: 10vh;
 }
+
+.infoCont{
+  margin-top: 5px;
+  background: rgb(62,62,62);
+  background: linear-gradient(0deg, rgba(62,62,62,1) 0%, rgba(0,0,0,1) 100%);
+  padding: 2rem;
+  height: fit-content;
+  gap: 3rem;
+}
+
+.iconCont{
+  margin-top: 5rem;
+  gap: 2rem;
+}
+
+.iconCont img{
+  width: 50px;
+  filter: invert(1);
+}
+
+.brandCont img{
+  width: 100%;
+}
   
 #index {
   background-image: url(http://reviewcentralme.com/wp-content/uploads/2021/05/BlackWidow-V3-Mini-HyperSpeed-2021-Photo-1-Key-Visual.jpg);
@@ -70,6 +93,96 @@ header {
 .carousel {
   transition: 1s !important;
 }
+
+@media screen and (max-width: 769px){
+  .carousel-item img{
+    height: 350px !important;
+    width: 100% !important;
+  }
+
+  .carousel-item .carouselItemText{
+    height: fit-content !important;
+    width: 400px;
+    justify-content: center !important;
+    position: absolute;
+    background-color: transparent;
+    top: 160px;
+    left: 150px;
+    box-shadow: none;
+  }
+
+  .carouselItemText p{
+    width: fit-content;
+    text-align: center;
+  }
+
+  .carouselItemText h4{
+    font-size: small;
+  }
+
+  .carouselItemText .btn_container{
+    scale: 0.5;
+  }
+}
+
+@media screen and (max-width: 426px){
+  .carousel-item img{
+    height: 200px !important;
+    width: 100% !important;
+  }
+
+  .carousel-item .carouselItemText{
+    height: 70px !important;
+    justify-content: center !important;
+    position: absolute;
+    background-color: transparent;
+    top: 120px;
+    left: 0px;
+    box-shadow: none;
+  }
+
+  .carouselItemText p{
+    display: none;
+  }
+
+  .carouselItemText h4{
+    font-size: small;
+  }
+
+  .carouselItemText .btn_container{
+    scale: 0.3;
+  }
+}
+
+@media screen and (max-width: 376px){
+  .carousel-item img{
+    height: 200px !important;
+    width: 100% !important;
+  }
+
+  .carousel-item .carouselItemText{
+    height: 70px !important;
+    justify-content: center !important;
+    position: absolute;
+    background-color: transparent;
+    top: 120px;
+    left: -23px;
+    box-shadow: none;
+  }
+
+  .carouselItemText p{
+    display: none;
+  }
+
+  .carouselItemText h4{
+    font-size: small;
+  }
+
+  .carouselItemText .btn_container{
+    scale: 0.3;
+  }
+}
+
   
 .text-white-bold {
   color: #f0f9ff !important;
@@ -374,20 +487,12 @@ form input:focus{
   text-align:center;
 }
 
-
-
-.footer-dark .item.social > a {
-  font-size:20px;
-  width:36px;
-  height:36px;
-  line-height:36px;
-  display:inline-block;
-  text-align:center;
-  border-radius:50%;
-  box-shadow:0 0 0 1px rgba(255,255,255,0.4);
-  margin:0 8px;
-  color:#fff;
-  opacity:0.75;
+.icon-ancor{
+  filter: invert(1);
+  width: 40px;
+  height: 40px;
+  background-image: url(../images/linked-in-logo.png);
+  background-size: cover;
 }
 
 .footer-dark .item.social > a:hover {
