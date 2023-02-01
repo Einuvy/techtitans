@@ -70,29 +70,14 @@ public class EcommerceApplication {
 			image.add("pruebas");
 			image.add("pruebitas");
 
-			Product monitor = new Product("Monitor", 200D, "MN-589", "Es un lindo monitor", 25, "AMD", categories1, ProductType.MONITOR, image);
-			productRepository.save(monitor);
-			Product mouse = new Product("Mouse", 20D, "MS-59", "Es un lindo mouse", 100, "HyperX", categories2, ProductType.MOUSE, image);
-			productRepository.save(mouse);
-			Product mousepad = new Product("Mouse Pad", 200D, "MP-8759", "Es un lindo mousepad", 100, "HyperX", categories3, ProductType.MOUSE_PAD, image);
-			productRepository.save(mousepad);
+
 
 
 			ShoppingCart cartMelba = new ShoppingCart("CODE-58917", LocalDateTime.now(), PaymentType.CBU);
 			shoppingCartRepository.save(cartMelba);
 			VIN001.addShoppingCart(cartMelba);
 
-			CartProduct product1 = new CartProduct(5);
-			cartProductRepository.save(product1);
-			monitor.addCartProduct(product1);
-			monitor.setStock(monitor.getStock()-product1.getQuantity());
-			cartMelba.addCartProduct(product1);
 
-			CartProduct product2 = new CartProduct(2);
-			cartProductRepository.save(product2);
-			mouse.addCartProduct(product2);
-			mouse.setStock(mouse.getStock() - product2.getQuantity());
-			cartMelba.addCartProduct(product2);
 
 			Double total1 = cartMelba.getCartProducts().stream().mapToDouble(cartProduct -> cartProduct.getProduct().getPrice() * cartProduct.getQuantity()).sum();
 			cartMelba.setTotal(total1);
@@ -106,12 +91,9 @@ public class EcommerceApplication {
 			walletRepository.save(VIN001);
 			walletRepository.save(VIN002);
 			walletRepository.save(VIN003);
-			productRepository.save(monitor);
-			productRepository.save(mouse);
-			productRepository.save(mousepad);
+
 			shoppingCartRepository.save(cartMelba);
-			cartProductRepository.save(product1);
-			cartProductRepository.save(product2);
+
 		};
 	}
 }

@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 public class ProductDTO {
 
+    private Long id;
     private String name;
 
     private Double price;
@@ -26,6 +27,7 @@ public class ProductDTO {
     private List<String> categories;
 
     public ProductDTO(Product product) {
+        this.id = product.getId();
         this.name = product.getName();
         this.price = product.getPrice();
         this.code = product.getCode();
@@ -35,6 +37,10 @@ public class ProductDTO {
         this.categories = product.getCategories().stream().collect(Collectors.toList());
         this.type = product.getProductType().getName();
         this.image = product.getImage();
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {

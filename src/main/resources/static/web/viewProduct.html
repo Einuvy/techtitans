@@ -103,17 +103,26 @@
                         <th scope="col">Name</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Price</th>
+                        <th scope="col">Delete</th>
                       </tr>
                     </thead>
                     <tbody class="text-white-bold">
-                      <tr>
+                      <tr v-for="product in productCart">
                         <th scope="row">
                         <figure>
-                          <img src="https://source.unsplash.com/W1yjvf5idqA" alt="">
+                            <img 
+                            v-bind:src="product.image[0]"
+                            alt="">
                         </figure></th>
-                        <td>Product</td>
+                        <td>{{product.name}}</td>
                         <td>x5</td>
-                        <td>$30</td>
+                        <td>${{product.price}}</td>
+                        <td>
+                                
+                          <svg @click="removeFromCart(product)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-x-fill" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM6.854 5.146a.5.5 0 1 0-.708.708L7.293 7 6.146 8.146a.5.5 0 1 0 .708.708L8 7.707l1.146 1.147a.5.5 0 1 0 .708-.708L8.707 7l1.147-1.146a.5.5 0 0 0-.708-.708L8 6.293 6.854 5.146z"/>
+                          </svg>
+                      </td>
                       </tr>
                       
                     </tbody>
@@ -132,28 +141,31 @@
               
               <div class="d-flex flex-column flex-md-row w-100 container-info-product-left  gap-4 p-3 ">
                 <div class="w-100 w-md-50">
-                  <div class="w-100 d-flex flex-column justify-content-center align-items-center img-product">
-                    <div class="product-image">
-                      <img class="active query-img-Active" src="https://source.unsplash.com/W1yjvf5idqA">
+                  
+                    <div class="w-100 d-flex flex-column justify-content-center align-items-center img-product">
+                      <div class="product-image">
+                        <img class="active query-img-Active" :src="activeImage">
+                      </div>
+                      <ul class="image-list">
+                        <li class="image-item" v-for="image in productImages">
+                          <img :src="image" @click="changeImage(image)" alt="">
+                        </li>
+                      </ul>
                     </div>
-                    <ul class="image-list">
-                      <li class="image-item"><img src="https://source.unsplash.com/W1yjvf5idqA"></li>
-                      <li class="image-item"><img src="https://source.unsplash.com/VgbUxvW3gS4"></li>
-                      <li class="image-item"><img src="https://source.unsplash.com/5WbYFH0kf_8"></li>
-                    </ul>
-                  </div>
+                  
                 </div>
                 <div class="d-flex flex-column justify-content-between w-100 w-md-50 container-info-product flex-wrap">
                   <div class="container-info d-flex flex-column w-100 flex-wrap text-break-css">
-                    <h1 class="description ancor-footer">Bonsai</h1>
-                    <h2 class="description ancor-footer">$19.99</h2>
+                    <h1 class="description ancor-footer">{{productId.name}}</h1>
+                    <h2 class="description ancor-footer">{{productId.price}}</h2>
                     <div class="description ancor-footer d-flex flex-column flex-wrap text-break-css ">
-                      <p class="text-break-css">The purposes of bonsai are primarily contemplation for the viewer, and the pleasant exercise of effort and ingenuity for the grower.</p>
-                      <p class="d-flex flex-wrap text-break-css">By contrast with other plant cultivation practices, bonsai is not intended for production of food or for medicine. Instead, bonsai practice focuses on long-term cultivation and shaping of one or more small trees growing in a container.</p>
+                      <p class="d-flex flex-wrap text-break-css">Stock: {{productId.stock}}</p>
+                      <p class="d-flex flex-wrap text-break-css">Brand: {{productId.brand}}</p>
+                      <p class="text-break-css">{{productId.description}}</p>
                     </div>
                   </div>
                   <div class="w-100 p-1">
-                      <button class="add-to-cart w-100 d-flex  justify-content-center"> <span>Add To Cart</span> </button>
+                      <button @click="addCart(productId)" class="add-to-cart w-100 d-flex  justify-content-center"> <span>Add To Cart</span> </button>
                   </div>
                 </div>
               </div>

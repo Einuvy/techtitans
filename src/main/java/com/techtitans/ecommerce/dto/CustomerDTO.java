@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 public class CustomerDTO {
 
+    private Long id;
     private String firstName;
 
     private String lastName;
@@ -23,6 +24,7 @@ public class CustomerDTO {
     private WalletDTO wallet;
 
     public CustomerDTO(Customer customer) {
+        this.id = customer.getId();
         this.firstName = customer.getFirstName();
         this.lastName = customer.getLastName();
         this.email = customer.getEmail();
@@ -30,6 +32,10 @@ public class CustomerDTO {
         this.birthDate = customer.getBirthDate();
         this.phoneNumber = customer.getPhoneNumber();
         this.wallet = new WalletDTO(customer.getWallet());
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getFirstName() {

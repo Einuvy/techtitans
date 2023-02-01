@@ -92,167 +92,120 @@
                                 </svg>
                             </button>
                             <input class="form-control me-2 text-green-neon search-input " type="search"
-                                placeholder="Search" aria-label="Search">
+                                placeholder="Search" v-model="searchInput" aria-label="Search">
+                                {{search}}
                         </form>
                     </div>
                 </div>
             </nav>
         </header>
         <main class="d-flex justify-content-center align-items-center">
-            <div class="productCont">
-                <div class="d-flex flex-wrap filterCont justify-content-between p-4 gap-3">
-                    <div class="text-white">
-                        TECH TITANS
+            <div class="modal fade modal-style" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-style-radius">
+                  <div class="modal-content modal-style modal-style-radius">
+                    <div class="modal-header text-white-bold">
+                      <h5 class="modal-title" id="exampleModalLabel">Your Products</h5>
+                      <button type="button" class=" btn-modal-close-x d-flex justify-content-center align-items-center" data-bs-dismiss="modal" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                        </svg>
+                      </button>
                     </div>
-                    <input type="search" placeholder="Product Search..." id="Buscador"/>
+                    <div class="modal-body text-white-bold d-flex w-100">
+                      <table class="table">
+                        <thead class="text-white-bold">
+                          <tr>
+                            <th scope="col">View</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Delete</th>
+                          </tr>
+                        </thead>
+                        <tbody class="text-white-bold">
+                          <tr v-for="product in productCart">
+                            <th scope="row">
+                            <figure>
+                                <img 
+                                v-bind:src="product.image[0]"
+                                alt="">
+                            </figure></th>
+                            <td>{{product.name}}</td>
+                            <td>x5</td>
+                            <td>${{product.price}}</td>
+                            <td>
+                                
+                                <svg @click="removeFromCart(product)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-x-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM6.854 5.146a.5.5 0 1 0-.708.708L7.293 7 6.146 8.146a.5.5 0 1 0 .708.708L8 7.707l1.146 1.147a.5.5 0 1 0 .708-.708L8.707 7l1.147-1.146a.5.5 0 0 0-.708-.708L8 6.293 6.854 5.146z"/>
+                                </svg>
+                            </td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                      
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-modal-close" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-modal-buy">Buy</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div class="productCont">
+                <div class="d-flex flex-wrap filterCont justify-content-between gap-3">
+                    
                     <div class="d-flex filter align-items-center justify-content-center gap-2">
                         <h6>Filter:</h6>
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <select v-model="select" class="form-select form-select-sm" aria-label=".form-select-sm example">
                             <option class="formOption" selected>Category</option>
-                            <option class="formOption" value="1">One</option>
-                            <option class="formOption" value="2">Two</option>
-                            <option class="formOption" value="3">Three</option>
+                            <option class="formOption"  value="Keyboard">Keyboard</option>
+                            <option class="formOption"  value="GPU">GPU</option>
+                            <option class="formOption"  value="Mouse">Mouse</option>
                         </select>
                     </div>
                 </div>
                 <div class="d-flex flex-wrap p-3 justify-content-center align items center gap-3">
                     <!-- card -->
-                    <div class="cardBorder">
-                        <div class="cardCont">
-                            <div class="cardImage">
-                                <img src="https://tecnobits.xyz/wp-content/uploads/2019/01/C%C3%B3mo-armar-una-PC-Gaming-Extrema-en-2019.jpg"
-                                    alt="">
-                            </div>
-                            <div class="p-2">
-                                <div class="cardBody d-flex flex-column align-items-center">
-                                    <h4>Name</h4>
-                                    <table class="w-100">
-                                        <tbody class="d-flex flex-column gap-1">
-                                            <tr>
-                                                <td class="text-start w-100">Brand</td>
-                                                <td class="text-end">Asus</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-start w-100">Price</td>
-                                                <td class="text-end">$100</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-start w-100">Stock</td>
-                                                <td class="text-end">50u</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="w-100 d-flex justify-content-between pt-3">
-                                        <!-- button with links -->
-                                        <button class="detailBtn">VIEW DETAILS</button>
-                                        <button class="kartBtn">ADD TO KART</button>
-                                    </div>
+                    <template v-for="product in productsFilter">
+                        <div class="cardBorder">
+                            <div class="cardCont">
+                                <div class="cardImage">
+                                    <img v-bind:src="product.image[0]"
+                                        alt="">
                                 </div>
+                                
+                                    <div class="cardBody d-flex flex-column align-items-center justify-content-between">
+                                        <h4 class="title-card">{{product.name}}</h4>
+                                        <table class="w-100">
+                                            <tbody class="d-flex flex-column gap-1">
+                                                <tr>
+                                                    <td class="text-start w-100">Brand</td>
+                                                    <td class="text-end">{{product.brand}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-start w-100">Price</td>
+                                                    <td class="text-end">${{product.price}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-start w-100">Stock</td>
+                                                    <td class="text-end">{{product.stock}}u</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="w-100 d-flex justify-content-between pt-3">
+                                            <!-- button with links -->
+                                            <a :href="'./viewProduct.html?id='+ product.id" class="detailBtn d-flex align-items-center justify-content-center">VIEW DETAILS</a>
+                                            <a @click="addCart(product)" class="detailBtn d-flex align-items-center justify-content-center">ADD TO KART</a>
+                                        </div>
+                                    </div>
+                                
                             </div>
                         </div>
-                    </div>
-                    <div class="cardBorder">
-                        <div class="cardCont">
-                            <div class="cardImage">
-                                <img src="https://tecnobits.xyz/wp-content/uploads/2019/01/C%C3%B3mo-armar-una-PC-Gaming-Extrema-en-2019.jpg"
-                                    alt="">
-                            </div>
-                            <div class="p-2">
-                                <div class="cardBody d-flex flex-column align-items-center">
-                                    <h4>Name</h4>
-                                    <table class="w-100">
-                                        <tbody class="d-flex flex-column gap-1">
-                                            <tr>
-                                                <td class="text-start w-100">Brand</td>
-                                                <td class="text-end">Asus</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-start w-100">Price</td>
-                                                <td class="text-end">$100</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-start w-100">Stock</td>
-                                                <td class="text-end">50u</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="w-100 d-flex justify-content-between pt-3">
-                                        <!-- button with links -->
-                                        <button>VIEW DETAILS</button>
-                                        <button>ADD TO KART</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cardBorder">
-                        <div class="cardCont">
-                            <div class="cardImage">
-                                <img src="https://tecnobits.xyz/wp-content/uploads/2019/01/C%C3%B3mo-armar-una-PC-Gaming-Extrema-en-2019.jpg"
-                                    alt="">
-                            </div>
-                            <div class="p-2">
-                                <div class="cardBody d-flex flex-column align-items-center">
-                                    <h4>Name</h4>
-                                    <table class="w-100">
-                                        <tbody class="d-flex flex-column gap-1">
-                                            <tr>
-                                                <td class="text-start w-100">Brand</td>
-                                                <td class="text-end">Asus</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-start w-100">Price</td>
-                                                <td class="text-end">$100</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-start w-100">Stock</td>
-                                                <td class="text-end">50u</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="w-100 d-flex justify-content-between pt-3">
-                                        <!-- button with links -->
-                                        <button>VIEW DETAILS</button>
-                                        <button>ADD TO KART</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cardBorder">
-                        <div class="cardCont">
-                            <div class="cardImage">
-                                <img src="https://tecnobits.xyz/wp-content/uploads/2019/01/C%C3%B3mo-armar-una-PC-Gaming-Extrema-en-2019.jpg"
-                                    alt="">
-                            </div>
-                            <div class="p-2">
-                                <div class="cardBody d-flex flex-column align-items-center">
-                                    <h4>Name</h4>
-                                    <table class="w-100">
-                                        <tbody class="d-flex flex-column gap-1">
-                                            <tr>
-                                                <td class="text-start w-100">Brand</td>
-                                                <td class="text-end">Asus</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-start w-100">Price</td>
-                                                <td class="text-end">$100</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-start w-100">Stock</td>
-                                                <td class="text-end">50u</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="w-100 d-flex justify-content-between pt-3">
-                                        <!-- button with links -->
-                                        <button>VIEW DETAILS</button>
-                                        <button>ADD TO KART</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        
+                    </template>
+                        
                 </div>
             </div>
 
