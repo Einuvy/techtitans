@@ -70,6 +70,96 @@ header {
 .carousel {
   transition: 1s !important;
 }
+
+@media screen and (max-width: 769px){
+  .carousel-item img{
+    height: 350px !important;
+    width: 100% !important;
+  }
+
+  .carousel-item .carouselItemText{
+    height: fit-content !important;
+    width: 400px;
+    justify-content: center !important;
+    position: absolute;
+    background-color: transparent;
+    top: 160px;
+    left: 150px;
+    box-shadow: none;
+  }
+
+  .carouselItemText p{
+    width: fit-content;
+    text-align: center;
+  }
+
+  .carouselItemText h4{
+    font-size: small;
+  }
+
+  .carouselItemText .btn_container{
+    scale: 0.5;
+  }
+}
+
+@media screen and (max-width: 426px){
+  .carousel-item img{
+    height: 200px !important;
+    width: 100% !important;
+  }
+
+  .carousel-item .carouselItemText{
+    height: 70px !important;
+    justify-content: center !important;
+    position: absolute;
+    background-color: transparent;
+    top: 120px;
+    left: 150px;
+    box-shadow: none;
+  }
+
+  .carouselItemText p{
+    display: none;
+  }
+
+  .carouselItemText h4{
+    font-size: small;
+  }
+
+  .carouselItemText .btn_container{
+    scale: 0.3;
+  }
+}
+
+@media screen and (max-width: 376px){
+  .carousel-item img{
+    height: 200px !important;
+    width: 100% !important;
+  }
+
+  .carousel-item .carouselItemText{
+    height: 70px !important;
+    justify-content: center !important;
+    position: absolute;
+    background-color: transparent;
+    top: 120px;
+    left: 140px;
+    box-shadow: none;
+  }
+
+  .carouselItemText p{
+    display: none;
+  }
+
+  .carouselItemText h4{
+    font-size: small;
+  }
+
+  .carouselItemText .btn_container{
+    scale: 0.3;
+  }
+}
+
   
 .text-white-bold {
   color: #f0f9ff !important;
