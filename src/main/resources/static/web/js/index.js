@@ -13,7 +13,10 @@ const index = createApp({
         
     },
     methods: {
-     
+        
+        loadData() {
+            
+        }
             
     },
     computed: {
