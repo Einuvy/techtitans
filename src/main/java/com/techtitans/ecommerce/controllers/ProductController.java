@@ -191,27 +191,27 @@ public class ProductController {
         return new ResponseEntity<>("Case Creada uwu", HttpStatus.OK);
     }
 
-    @PostMapping("/products/storage")
-    public ResponseEntity<Object> registerStorage(@RequestBody StorageRegisterDTO storageRegisterDTO){
-
-        Set<String> categories = new HashSet<>();
-        categories.add("Storage");
-
-        Product storage = new Product(storageRegisterDTO.getName(),
-                storageRegisterDTO.getPrice(),
-                storageRegisterDTO.getCode(),
-                "Storage Type: " + storageRegisterDTO.getStorageType() + " - Storage Interface: " + storageRegisterDTO.getStorageInterface() +
-                        " - RPM: " + storageRegisterDTO.getRpm(),
-                getRandomNumber3(),
-                storageRegisterDTO.getBrand(),
-                categories,
-                ProductType.STORAGE,
-                storageRegisterDTO.getImg());
-
-        productService.saveProduct(storage);
-
-        return new ResponseEntity<>("Storage Creada uwu", HttpStatus.OK);
-    }
+//    @PostMapping("/products/storage")
+//    public ResponseEntity<Object> registerStorage(@RequestBody StorageRegisterDTO storageRegisterDTO){
+//
+//        Set<String> categories = new HashSet<>();
+//        categories.add("Storage");
+//
+//        Product storage = new Product(storageRegisterDTO.getName(),
+//                storageRegisterDTO.getPrice(),
+//                storageRegisterDTO.getCode(),
+//                "Storage Type: " + storageRegisterDTO.getStorageType() + " - Storage Interface: " + storageRegisterDTO.getStorageInterface() +
+//                        " - RPM: " + storageRegisterDTO.getRpm(),
+//                getRandomNumber3(),
+//                storageRegisterDTO.getBrand(),
+//                categories,
+//                ProductType.STORAGE,
+//                storageRegisterDTO.getImg());
+//
+//        productService.saveProduct(storage);
+//
+//        return new ResponseEntity<>("Storage Creada uwu", HttpStatus.OK);
+//    }
 
     @PostMapping("/products/storage")
     public ResponseEntity<Object> registerKeyboard(@RequestBody KeyboardRegisterDTO keyboardRegisterDTO){
