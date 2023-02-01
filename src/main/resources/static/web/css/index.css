@@ -41,6 +41,29 @@ header {
     width: 100% !important;
     height: 10vh;
 }
+
+.infoCont{
+  margin-top: 5px;
+  background: rgb(62,62,62);
+  background: linear-gradient(0deg, rgba(62,62,62,1) 0%, rgba(0,0,0,1) 100%);
+  padding: 2rem;
+  height: fit-content;
+  gap: 3rem;
+}
+
+.iconCont{
+  margin-top: 5rem;
+  gap: 2rem;
+}
+
+.iconCont img{
+  width: 50px;
+  filter: invert(1);
+}
+
+.brandCont img{
+  width: 100%;
+}
   
 #index {
   background-image: url(http://reviewcentralme.com/wp-content/uploads/2021/05/BlackWidow-V3-Mini-HyperSpeed-2021-Photo-1-Key-Visual.jpg);
