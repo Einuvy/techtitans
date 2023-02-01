@@ -1,7 +1,7 @@
 package com.techtitans.ecommerce.controllers;
 
 import com.techtitans.ecommerce.dto.CustomerDTO;
-import com.techtitans.ecommerce.dto.CustomerRegisterDTO;
+import com.techtitans.ecommerce.dto.registerDTO.CustomerRegisterDTO;
 import com.techtitans.ecommerce.models.Customer;
 import com.techtitans.ecommerce.models.Wallet;
 import com.techtitans.ecommerce.services.implementations.CustomerServiceImplementation;
@@ -9,6 +9,8 @@ import com.techtitans.ecommerce.services.implementations.WalletServiceImplementa
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -22,6 +24,8 @@ import static com.techtitans.ecommerce.utils.VerificationUtils.isMissing;
 @RestController
 @RequestMapping("/api")
 public class CustomerController {
+    @Autowired
+    PasswordEncoder passwordEncoder;
     @Autowired
     CustomerServiceImplementation customerService;
     @Autowired
@@ -61,7 +65,7 @@ public class CustomerController {
         if (customerRegister.getBirthDate().isAfter(LocalDate.now())){
             return new ResponseEntity<>("Wrong birth date", HttpStatus.FORBIDDEN);
         }
-        if(customerRegister.getBirthDate().isBefore(LocalDate.now().minusYears(13))){
+        if(customerRegister.getBirthDate().isAfter(LocalDate.now().minusYears(13))){
             return new ResponseEntity<>("Pal lobi", HttpStatus.FORBIDDEN);
         }
         if (isMissing(customerRegister.getBirthDate().toString())){
@@ -71,7 +75,7 @@ public class CustomerController {
         Customer customer = new Customer(customerRegister.getFirstName(),
                                          customerRegister.getLastName(),
                                          customerRegister.getEmail(),
-                                         customerRegister.getPassword(),
+                                         passwordEncoder.encode(customerRegister.getPassword()),
                                          LocalDateTime.now(),
                                          customerRegister.getAddress(),
                                          customerRegister.getBirthDate(),
@@ -90,5 +94,10 @@ public class CustomerController {
         customerService.saveCustomer(customer);
 
         return new ResponseEntity<>("Account Created",HttpStatus.CREATED);
+    }
+
+    @GetMapping("/customers/current")
+    public CustomerDTO getCurrentCustomer(Authentication authentication){
+        return new CustomerDTO(customerService.findCustomerByEmail(authentication.getName()));
     }
 }

@@ -1,17 +1,19 @@
 package com.techtitans.ecommerce;
 
 import com.techtitans.ecommerce.enums.PaymentType;
+import com.techtitans.ecommerce.enums.ProductType;
 import com.techtitans.ecommerce.models.*;
 import com.techtitans.ecommerce.repositories.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @SpringBootApplication
 public class EcommerceApplication {
@@ -19,6 +21,8 @@ public class EcommerceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EcommerceApplication.class, args);
 	}
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
 
 	@Bean
@@ -29,11 +33,11 @@ public class EcommerceApplication {
 									  CartProductRepository cartProductRepository){
 		return(args) ->{
 
-			Customer melba = new Customer("Melba", "Morel", "melba@mindhub.com", "asd005", LocalDateTime.now(), "calle 166", LocalDate.now().minusYears(5), "+5493764705569");
+			Customer melba = new Customer("Melba", "Morel", "melba@mindhub.com", passwordEncoder.encode("asd005"), LocalDateTime.now(), "calle 166", LocalDate.now().minusYears(5), "+5493764705569");
 			customerRepository.save(melba);
-			Customer manu = new Customer("Manu", "Morel", "manu@mindhub.com", "asd004", LocalDateTime.now(), "calle 100", LocalDate.now().minusYears(9), "+5493764788954");
+			Customer manu = new Customer("Manu", "Morel", "manu@mindhub.com", passwordEncoder.encode("asd004"), LocalDateTime.now(), "calle 100", LocalDate.now().minusYears(9), "+5493764788954");
 			customerRepository.save(manu);
-			Customer jose = new Customer("Jose", "Morel", "jose@mindhub.com", "asd003", LocalDateTime.now(), "calle 1624", LocalDate.now().minusYears(15), "+5493764209567");
+			Customer jose = new Customer("Jose", "Morel", "jose@mindhub.com", passwordEncoder.encode("asd003"), LocalDateTime.now(), "calle 1624", LocalDate.now().minusYears(15), "+5493764209567");
 			customerRepository.save(jose);
 
 			Wallet VIN001 = new Wallet("VIN-001", 1899D);
@@ -61,11 +65,16 @@ public class EcommerceApplication {
 			categories3.add("RGB");
 			categories3.add("HyperX");
 
-			Product monitor = new Product("Monitor", 200D, "MN-589", "Es un lindo monitor", 25, "AMD", categories1);
+			List<String> image = new ArrayList<>();
+			image.add("prueba");
+			image.add("pruebas");
+			image.add("pruebitas");
+
+			Product monitor = new Product("Monitor", 200D, "MN-589", "Es un lindo monitor", 25, "AMD", categories1, ProductType.MONITOR, image);
 			productRepository.save(monitor);
-			Product mouse = new Product("Mouse", 20D, "MS-59", "Es un lindo mouse", 100, "HyperX", categories2);
+			Product mouse = new Product("Mouse", 20D, "MS-59", "Es un lindo mouse", 100, "HyperX", categories2, ProductType.MOUSE, image);
 			productRepository.save(mouse);
-			Product mousepad = new Product("Mouse Pad", 200D, "MP-8759", "Es un lindo mousepad", 100, "HyperX", categories3);
+			Product mousepad = new Product("Mouse Pad", 200D, "MP-8759", "Es un lindo mousepad", 100, "HyperX", categories3, ProductType.MOUSE_PAD, image);
 			productRepository.save(mousepad);
 
 
@@ -88,8 +97,6 @@ public class EcommerceApplication {
 			Double total1 = cartMelba.getCartProducts().stream().mapToDouble(cartProduct -> cartProduct.getProduct().getPrice() * cartProduct.getQuantity()).sum();
 			cartMelba.setTotal(total1);
 			cartMelba.getWallet().setBalance(cartMelba.getWallet().getBalance() - total1);
-
-
 
 			//saves
 

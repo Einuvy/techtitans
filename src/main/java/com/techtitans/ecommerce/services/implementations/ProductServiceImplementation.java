@@ -23,4 +23,9 @@ public class ProductServiceImplementation implements ProductService {
     public Product findProductById(Long id) {
         return productRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public void saveProduct(Product product){
+        productRepository.save(product);
+    }
 }

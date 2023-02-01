@@ -19,6 +19,10 @@ public class ProductDTO {
 
     private String brand;
 
+    private String type;
+
+    private List<String> image;
+
     private List<String> categories;
 
     public ProductDTO(Product product) {
@@ -29,6 +33,8 @@ public class ProductDTO {
         this.stock = product.getStock();
         this.brand = product.getBrand();
         this.categories = product.getCategories().stream().collect(Collectors.toList());
+        this.type = product.getProductType().getName();
+        this.image = product.getImage();
     }
 
     public String getName() {
@@ -57,5 +63,13 @@ public class ProductDTO {
 
     public List<String> getCategories() {
         return categories;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public List<String> getImage() {
+        return image;
     }
 }

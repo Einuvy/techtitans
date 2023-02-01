@@ -9,4 +9,6 @@ public interface ProductService {
     List<Product> getAllProducts();
 
     Product findProductById(Long id);
+
+    public void saveProduct(Product product);
 }

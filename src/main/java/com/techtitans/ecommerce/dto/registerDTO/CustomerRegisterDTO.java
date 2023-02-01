@@ -1,7 +1,10 @@
-package com.techtitans.ecommerce.dto;
+package com.techtitans.ecommerce.dto.registerDTO;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
+import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
 
 public class CustomerRegisterDTO {
 
@@ -15,6 +18,7 @@ public class CustomerRegisterDTO {
 
     private String address;
 
+    @JsonFormat(shape = STRING, pattern = "dd/MM/yyyy")
     private LocalDate birthDate;
 
     private String phoneNumber;

@@ -1,10 +1,13 @@
 package com.techtitans.ecommerce.models;
 
+import com.techtitans.ecommerce.enums.ProductType;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.AUTO;
@@ -30,6 +33,12 @@ public class Product {
 
     private String brand;
 
+    @Enumerated(EnumType.STRING)
+    private ProductType type;
+
+    @ElementCollection
+    private List<String> image = new ArrayList<>();
+
     @ElementCollection
     private Set<String> categories = new HashSet<>();
 
@@ -44,7 +53,9 @@ public class Product {
                    String description,
                    Integer stock,
                    String brand,
-                   Set<String> categories) {
+                   Set<String> categories,
+                   ProductType type,
+                   List<String> image) {
         this.name = name;
         this.price = price;
         this.code = code;
@@ -53,6 +64,8 @@ public class Product {
         this.stock = stock;
         this.brand = brand;
         this.categories = categories;
+        this.type = type;
+        this.image = image;
     }
 
     public void addCartProduct(CartProduct cartProduct){
@@ -134,4 +147,22 @@ public class Product {
     public Set<CartProduct> getCartProducts() {
         return cartProducts;
     }
+
+    public ProductType getProductType() {
+        return type;
+    }
+
+    public void setType(ProductType type) {
+        this.type = type;
+    }
+
+    public List<String> getImage() {
+        return image;
+    }
+
+    public void setImage(List<String> image) {
+        this.image = image;
+    }
+
+
 }

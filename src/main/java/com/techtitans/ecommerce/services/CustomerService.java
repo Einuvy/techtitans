@@ -10,5 +10,7 @@ public interface CustomerService {
 
     Customer findCustomerById(Long id);
 
+    Customer findCustomerByEmail(String email);
+
     void saveCustomer(Customer customer);
 }
