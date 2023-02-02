@@ -100,4 +100,34 @@ public class CustomerController {
     public CustomerDTO getCurrentCustomer(Authentication authentication){
         return new CustomerDTO(customerService.findCustomerByEmail(authentication.getName()));
     }
+
+    @PatchMapping("/customers/current/password")
+    public ResponseEntity<?> changePassword(Authentication authentication,
+                                            @RequestParam String newPassword,
+                                            @RequestParam String password,
+                                            @RequestParam String email) {
+        Customer customer = customerService.findCustomerByEmail(authentication.getName());
+
+
+        if (!(customer.getEmail().equals(email))) {
+            return new ResponseEntity<>("Email incorrect",HttpStatus.FORBIDDEN);
+
+        }
+        if (passwordEncoder.matches(newPassword, customer.getPassword())) {
+            return new ResponseEntity<>("You must enter a different password than the previous one",HttpStatus.FORBIDDEN);
+        }
+        if (newPassword.length() < 5) {
+            return new ResponseEntity<>("Password must contain at least 5 characters", HttpStatus.FORBIDDEN);
+        }
+        if (!passwordEncoder.matches(password, customer.getPassword())){
+            return new ResponseEntity<>("Current password incorrect", HttpStatus.FORBIDDEN);
+        }
+        if (password.isEmpty() || email.isEmpty() || newPassword.isEmpty()) {
+            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+        }
+        customer.setPassword(passwordEncoder.encode(newPassword));
+        customerService.saveCustomer(customer);
+        return new ResponseEntity<>("Password changed successfully", HttpStatus.OK);
+    }
+
 }

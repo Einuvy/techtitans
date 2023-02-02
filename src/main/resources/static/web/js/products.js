@@ -32,7 +32,11 @@ const products = createApp({
         addCart(product) {
             let alreadyInCart = this.productCart.find((item) => item.id === product.id)
             if (alreadyInCart) {
-                alert("Product already in cart");
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Product already in cart"
+                })
             } else {
                 this.productCart.push(product);
                 this.saveCartToLocalStorage()

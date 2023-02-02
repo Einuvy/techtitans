@@ -187,15 +187,15 @@
                     <div class="d-flex flex-column justify-content-center align-items-center w-100 gap-2">
                         <div class="d-flex flex-column">
                             <label class="text-white" for="loginEmail">Email:</label>
-                            <input id="loginEmail" type="text">
+                            <input id="loginEmail" type="text" v-model="emailVerification">
                         </div>
                         <div class="d-flex flex-column">
                             <label class="text-white" for="PasswordLogin">Your Password:</label>
-                            <input id="PasswordLogin" type="password">
+                            <input id="PasswordLogin" type="password" v-model="currentPassword">
                         </div>
                         <div class="d-flex flex-column">
                             <label class="text-white" for="PasswordLogin">New Password:</label>
-                            <input id="PasswordLogin" type="password">
+                            <input id="PasswordLogin" type="password" v-model="newPassword">
                         </div>
                     </div>
     
