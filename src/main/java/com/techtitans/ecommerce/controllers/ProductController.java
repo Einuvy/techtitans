@@ -37,6 +37,11 @@ public class ProductController {
         return new ProductDTO(productService.findProductById(id));
     }
 
+    @DeleteMapping("/product/{id}")
+    public void deleteProductById(@PathVariable Long id){
+        productService.deleteProductById(id);
+    }
+
     @PostMapping("/products/add")
     public ResponseEntity<Object> registerProduct(@RequestBody ProductRegisterDTO productRegister){
         Integer randNumber = getRandomNumber5();

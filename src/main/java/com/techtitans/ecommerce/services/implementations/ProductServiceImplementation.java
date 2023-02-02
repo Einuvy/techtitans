@@ -40,4 +40,9 @@ public class ProductServiceImplementation implements ProductService {
     public void saveProduct(Product product){
         productRepository.save(product);
     }
+
+    @Override
+    public void deleteProductById(Long id) {
+        productRepository.deleteById(id);
+    }
 }

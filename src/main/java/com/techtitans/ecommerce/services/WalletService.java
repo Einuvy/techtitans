@@ -13,4 +13,6 @@ public interface WalletService {
     Wallet getWalletByNumber(String number);
 
     void saveWallet(Wallet wallet);
+
+    void deleteWalletById(Long id);
 }

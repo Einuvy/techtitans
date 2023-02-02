@@ -44,4 +44,9 @@ public class WalletServiceImplementation implements WalletService {
     public void saveWallet(Wallet wallet) {
         walletRepository.save(wallet);
     }
+
+    @Override
+    public void deleteWalletById(Long id) {
+        walletRepository.deleteById(id);
+    }
 }
