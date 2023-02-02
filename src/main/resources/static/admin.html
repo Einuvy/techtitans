@@ -89,45 +89,65 @@
                     <div class="d-flex flex-column justify-content-center align-items-center w-100 gap-2">
                         <div class="d-flex flex-column w-100">
                             <label class="text-white" for="loginEmail">Product Name:</label>
-                            <input class="w-100" id="loginEmail" type="text" required>
+                            <input class="w-100" id="loginEmail" v-model="productName" type="text" required>
                         </div>
                         <div class="d-flex flex-column w-100">
                             <label class="text-white" for="PasswordLogin">Price:</label>
-                            <input class="w-100" id="PasswordLogin" type="number" required>
+                            <input class="w-100" id="PasswordLogin" type="number" v-model="price" required>
                         </div>
                         <div class="d-flex flex-column w-100">
                             <label class="text-white" for="PasswordLogin">Code:</label>
-                            <input class="w-100" id="PasswordLogin" type="text" required>
+                            <input class="w-100" id="PasswordLogin" type="text" v-model="code" required>
                         </div>
                         <div class="d-flex flex-column w-100">
                             <label class="text-white" for="description">Description:</label>
-                            <input class="w-100" id="description" type="text" required>
+                            <input class="w-100" id="description" type="text" v-model="description" required>
                         </div>
                         <div class="d-flex flex-column w-100">
-                            <label class="text-white" for="deleted">Deleted:</label>
-                            <input class="w-100" id="deleted" placeholder="true or false" type="text" required>
+                            <label class="text-white" for="deleted">Type Product:</label>
+                            <select v-model="type" name="" id="">
+                                <option value="MONITOR">Monitor</option>
+                                <option value="CASE">Case</option>
+                                <option value="CASE_FAN">Case Fan</option>
+                                <option value="GPU">GPU</option>
+                                <option value="CPU_FAN">CPU Fan</option>
+                                <option value="KEYBOARD">Keyboard</option>
+                                <option value="MOTHERBOARD">Motherboard</option>
+                                <option value="MOUSE">Mouse</option>
+                                <option value="POWER_SUPPLY">Power Supply</option>
+                                <option value="PROCESSOR">Processor</option>
+                                <option value="RAM">RAM</option>
+                                <option value="STORAGE">Storage</option>
+                                <option value="MOUSE_PAD">Mouse Pad</option>
+                            </select>
                         </div>
                         <div class="d-flex flex-column w-100">
                             <label class="text-white" for="stock">Stock:</label>
-                            <input class="w-100" id="stock"  type="number" required>
+                            <input class="w-100" id="stock"  type="number" v-model="stock" required>
                         </div>
                         <div class="d-flex flex-column w-100">
                             <label class="text-white" for="brand">Brand:</label>
-                            <input class="w-100" id="brand"  type="text" required>
+                            <input class="w-100" id="brand"  type="text" v-model="brand" required>
                         </div>
                         <div class="d-flex flex-column w-100">
                             <label class="text-white" for="categories">Categories:</label>
-                            <input class="w-100" id="categories"  type="text" required>
+                            <input class="w-100" id="categories"  type="text" v-model="categoryPush" required>
+                            <button @click.prevent="addCategories">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                  </svg>
+                            </button> 
                         </div>
                         <div class="d-flex flex-column w-100">
                             <label class="text-white" for="images">Images:</label>
                             <input class="w-100" id="images" type="file" accept="image/*" required multiple v-model="images">
+                            
                         </div>
                         
                     </div>
     
                     <div class="d-flex justify-content-center my-3 w-100">
-                        <a @click.prevent class="ancorLogin" href="./index.html">
+                        <a @click.prevent="addProduct()" class="ancorLogin" href="./admin.html">
                             <button class="button-64" role="button"><span class="text">Add Product</span></button>
                         </a>
                     </div>

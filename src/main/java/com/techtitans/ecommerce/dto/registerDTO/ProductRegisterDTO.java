@@ -21,8 +21,6 @@ public class ProductRegisterDTO {
 
     private ProductType type;
 
-    private List<String> image;
-
     private Set<String> categories;
 
     public String getName() {
@@ -81,13 +79,7 @@ public class ProductRegisterDTO {
         this.type = type;
     }
 
-    public List<String> getImage() {
-        return image;
-    }
 
-    public void setImage(List<String> image) {
-        this.image = image;
-    }
 
     public Set<String> getCategories() {
         return categories;

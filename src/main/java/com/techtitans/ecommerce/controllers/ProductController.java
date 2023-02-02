@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,6 +41,7 @@ public class ProductController {
     public ResponseEntity<Object> registerProduct(@RequestBody ProductRegisterDTO productRegister){
         Integer randNumber = getRandomNumber5();
         String code = productRegister.getCode() + "-" + randNumber.toString();
+        List<String> images = new ArrayList<>();
 
         if(isMissing(productRegister.getName())){
             return new ResponseEntity<>("Name field empty", HttpStatus.FORBIDDEN);
@@ -65,7 +67,7 @@ public class ProductController {
                 productRegister.getBrand(),
                 productRegister.getCategories(),
                 productRegister.getType(),
-                productRegister.getImage());
+                images);
 
         productService.saveProduct(product);
 
