@@ -26,7 +26,7 @@ const index = createApp({
         loadData() {
             axios.get("/api/products")
             .then(res => {
-              this.products = res.data
+              this.products = res.data.slice(0, 3)
               this.productsFilter = this.products
               console.log(this.products);
             }).catch(error => console.error(error))

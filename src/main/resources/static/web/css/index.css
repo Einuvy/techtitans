@@ -90,9 +90,7 @@ header {
 
 } */
 
-.carousel {
-  transition: 1s !important;
-}
+
 
 @media screen and (max-width: 769px){
   .carousel-item img{
