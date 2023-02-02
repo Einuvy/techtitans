@@ -1,8 +1,10 @@
 package com.techtitans.ecommerce.models;
 
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,6 +13,10 @@ import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
+@Table(name = "wallet")
+@SQLDelete(sql = "UPDATE wallet SET deleted = true WHERE id = ?")
+@FilterDef(name = "deletedWallet", parameters = @ParamDef(name = "deleted", type = "boolean"))
+@Filter(name = "deletedWallet", condition = "deleted = :deleted")
 public class Wallet {
 
     @Id
@@ -21,6 +27,8 @@ public class Wallet {
     private String number;
 
     private Double balance;
+
+    private Boolean deleted;
 
     @OneToOne(fetch = EAGER)
     @JoinColumn(name = "customer_id")
@@ -36,6 +44,7 @@ public class Wallet {
                   Double balance) {
         this.number = number;
         this.balance = balance;
+        this.deleted = false;
     }
 
     public void addShoppingCart(ShoppingCart shoppingCart){

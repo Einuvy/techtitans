@@ -4,6 +4,7 @@ import com.techtitans.ecommerce.dto.ProductDTO;
 import com.techtitans.ecommerce.dto.registerDTO.*;
 import com.techtitans.ecommerce.enums.ProductType;
 import com.techtitans.ecommerce.models.Product;
+import com.techtitans.ecommerce.services.implementations.CustomerServiceImplementation;
 import com.techtitans.ecommerce.services.implementations.ProductServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static com.techtitans.ecommerce.utils.RandomNumberUtils.getRandomNumber3;
+import static com.techtitans.ecommerce.utils.RandomNumberUtils.getRandomNumber5;
+import static com.techtitans.ecommerce.utils.VerificationUtils.isMissing;
 
 @RestController
 @RequestMapping("/api")
@@ -31,6 +34,47 @@ public class ProductController {
     @GetMapping("/product/{id}")
     public ProductDTO getProductById(@PathVariable Long id){
         return new ProductDTO(productService.findProductById(id));
+    }
+
+    @DeleteMapping("/product/{id}")
+    public void deleteProductById(@PathVariable Long id){
+        productService.deleteProductById(id);
+    }
+
+    @PostMapping("/products/add")
+    public ResponseEntity<Object> registerProduct(@RequestBody ProductRegisterDTO productRegister){
+        Integer randNumber = getRandomNumber5();
+        String code = productRegister.getCode() + "-" + randNumber.toString();
+
+        if(isMissing(productRegister.getName())){
+            return new ResponseEntity<>("Name field empty", HttpStatus.FORBIDDEN);
+        }
+        if (productRegister.getPrice() == null || productRegister.getPrice()<=0){
+            return new ResponseEntity<>("Price field empty or wrong price", HttpStatus.FORBIDDEN);
+        }
+        if (isMissing(productRegister.getCode())){
+            return new ResponseEntity<>("Code field empty", HttpStatus.FORBIDDEN);
+        }
+        if ((productRegister.getStock() == null || productRegister.getStock()<=0)){
+            return new ResponseEntity<>("Stock field empty", HttpStatus.FORBIDDEN);
+        }
+        if (isMissing(productRegister.getBrand())){
+            return new ResponseEntity<>("Brand field empty", HttpStatus.FORBIDDEN);
+        }
+
+        Product product = new Product(productRegister.getName(),
+                productRegister.getPrice(),
+                code,
+                productRegister.getDescription(),
+                productRegister.getStock(),
+                productRegister.getBrand(),
+                productRegister.getCategories(),
+                productRegister.getType(),
+                productRegister.getImage());
+
+        productService.saveProduct(product);
+
+        return new ResponseEntity<>("Product added", HttpStatus.OK);
     }
 
     @PostMapping("/products/mouse")

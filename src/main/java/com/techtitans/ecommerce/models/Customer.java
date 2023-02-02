@@ -1,8 +1,10 @@
 package com.techtitans.ecommerce.models;
 
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,6 +13,10 @@ import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
+@Table(name = "customer")
+@SQLDelete(sql = "UPDATE customer SET deleted = true WHERE id = ?")
+@FilterDef(name = "deletedCustomer", parameters = @ParamDef(name = "deleted", type = "boolean"))
+@Filter(name = "deletedCustomer", condition = "deleted = :deleted")
 public class Customer {
     @Id
     @GeneratedValue(strategy = AUTO, generator = "native")

@@ -1,9 +1,11 @@
 package com.techtitans.ecommerce.models;
 
 import com.techtitans.ecommerce.enums.ProductType;
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,6 +15,10 @@ import java.util.Set;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
+@Table(name = "product")
+@SQLDelete(sql = "UPDATE product SET deleted = true WHERE id = ?")
+@FilterDef(name = "deletedProduct", parameters = @ParamDef(name = "deleted", type = "boolean"))
+@Filter(name = "deletedProduct", condition = "deleted = :deleted")
 public class Product {
     @Id
     @GeneratedValue(strategy = AUTO, generator = "native")
