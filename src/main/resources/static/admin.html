@@ -68,6 +68,7 @@
                                 </button>
                                 <input class="form-control me-2 text-green-neon search-input " type="search" placeholder="Search Client for email" aria-label="Search" v-model="InputSearch">
                                 {{searchClient}}
+                                {{searchProducts}}
                         </form>
                     </div>
                 </div>
@@ -77,48 +78,51 @@
         
     </header>
     
-    <main class="d-flex justify-content-center align-items-center  gap-4">
+    <main class="d-flex flex-column flex-lg-row  justify-content-center align-items-center  gap-4">
             
             
           <div class="container-form">
             <form action="" method="get">
-                <div class="d-flex flex-column align-items-center container-login p-3"  >
+                <div class="d-flex flex-column align-items-center container-login p-4"  >
                     <h2 class="text-white">Add Product</h2>
                     
                     <div class="d-flex flex-column justify-content-center align-items-center w-100 gap-2">
-                        <div class="d-flex flex-column">
+                        <div class="d-flex flex-column w-100">
                             <label class="text-white" for="loginEmail">Product Name:</label>
-                            <input id="loginEmail" type="text" required>
+                            <input class="w-100" id="loginEmail" type="text" required>
                         </div>
-                        <div class="d-flex flex-column">
+                        <div class="d-flex flex-column w-100">
                             <label class="text-white" for="PasswordLogin">Price:</label>
-                            <input id="PasswordLogin" type="number" required>
+                            <input class="w-100" id="PasswordLogin" type="number" required>
                         </div>
-                        <div class="d-flex flex-column">
+                        <div class="d-flex flex-column w-100">
                             <label class="text-white" for="PasswordLogin">Code:</label>
-                            <input id="PasswordLogin" type="text" required>
+                            <input class="w-100" id="PasswordLogin" type="text" required>
                         </div>
-                        <div class="d-flex flex-column">
+                        <div class="d-flex flex-column w-100">
                             <label class="text-white" for="description">Description:</label>
-                            <input id="description" type="text" required>
+                            <input class="w-100" id="description" type="text" required>
                         </div>
-                        <div class="d-flex flex-column">
+                        <div class="d-flex flex-column w-100">
                             <label class="text-white" for="deleted">Deleted:</label>
-                            <input id="deleted" placeholder="true or false" type="text" required>
+                            <input class="w-100" id="deleted" placeholder="true or false" type="text" required>
                         </div>
-                        <div class="d-flex flex-column">
+                        <div class="d-flex flex-column w-100">
                             <label class="text-white" for="stock">Stock:</label>
-                            <input id="stock"  type="number" required>
+                            <input class="w-100" id="stock"  type="number" required>
                         </div>
-                        <div class="d-flex flex-column">
+                        <div class="d-flex flex-column w-100">
                             <label class="text-white" for="brand">Brand:</label>
-                            <input id="brand"  type="text" required>
+                            <input class="w-100" id="brand"  type="text" required>
                         </div>
-                        <div class="d-flex flex-column">
+                        <div class="d-flex flex-column w-100">
                             <label class="text-white" for="categories">Categories:</label>
-                            <input id="categories"  type="text" required>
+                            <input class="w-100" id="categories"  type="text" required>
                         </div>
-                        <input type="file" accept="image/*" required multiple v-model="images">
+                        <div class="d-flex flex-column w-100">
+                            <label class="text-white" for="images">Images:</label>
+                            <input class="w-100" id="images" type="file" accept="image/*" required multiple v-model="images">
+                        </div>
                         
                     </div>
     
@@ -136,55 +140,61 @@
             </form>
             
         </div>
-        <div class="container-form-delete">
-            <form action="" method="get">
-                <div class="d-flex flex-column align-items-center justify-content-between container-login delete-client h-100 p-3"  >
-                    <h2 class="text-white">Delete Client</h2>
-                    
-                    <div class="d-flex flex-column justify-content-center align-items-center w-100 gap-2">
-                        <div class="d-flex flex-column">
-                            <label class="text-white" for="loginEmail">id:</label>
-                            <input id="loginEmail" type="number" required>
+        <div class="d-flex flex-column gap-3">
+            
+            <div class="container-form-delete">
+                <form action="" method="get">
+                    <div class="d-flex flex-column align-items-center justify-content-between container-login delete-client h-100 p-3"  >
+                        <h2 class="text-white">Delete Product</h2>
+                        
+                        <div class="d-flex flex-column justify-content-center align-items-center w-100 gap-2">
+                            <div class="d-flex flex-column">
+                                <label class="text-white" for="loginEmail">id:</label>
+                                <input id="loginEmail" type="number" v-model="idProduct" required>
+                            </div>
+                            
+                            
+                        </div>
+        
+                        <div class="d-flex justify-content-center my-3 w-100">
+                            <a @click.prevent class="ancorLogin" href="./index.html">
+                                <button class="button-64" role="button"><span class="text">Delete Client</span></button>
+                            </a>
                         </div>
                         
                         
                     </div>
     
-                    <div class="d-flex justify-content-center my-3 w-100">
-                        <a @click.prevent class="ancorLogin" href="./index.html">
-                            <button class="button-64" role="button"><span class="text">Delete Client</span></button>
-                        </a>
-                    </div>
                     
-                    
-                </div>
-
+    
+                </form>
                 
-
-            </form>
-            
-        </div>
-        <div class="container-form-filter">
-            
+            </div>
+            <div class="container-form-filter">
+                
                 <div class="d-flex flex-column align-items-center justify-content-between container-card delete-client h-100 p-3"  >
-                    <h2 class="text-white">Search Client</h2>
+                    <h2 class="text-white">Search Product</h2>
                     
                     <div class="d-flex flex-column justify-content-center align-items-center w-100 gap-2">
                         <table class="table">
                             <thead class="text-white-bold">
                               <tr>
                                 <th scope="col">id</th>
-                                <th scope="col">FirstName</th>
-                                <th scope="col">LastName</th>
-                                <th scope="col">Email</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">stock</th>
+                                <th scope="col">code</th>
+                                <th scope="col">deleted</th>
                               </tr>
                             </thead>
                             <tbody class="text-white-bold">
-                              <tr v-if="InputSearch.length > 0" v-for="client in clientFilter">
-                                <th scope="row">{{client.id}}</th>
-                                <td>{{client.firstName}}</td>
-                                <td>{{client.lastName}}</td>
-                                <td>{{client.email}}</td>
+                              <tr v-if="InputSearch.length > 0" v-for="product in productFilter">
+                                <th scope="row">{{product.id}}</th>
+                                <td>{{product.name}}</td>
+                                <td>{{product.categories[0]}}</td>
+                                <td>{{product.stock}}</td>
+                                <td>{{product.code}}</td>
+                                <td>{{product.deleted}}</td>
                               </tr>
                               
                               
@@ -198,11 +208,82 @@
                     
                     
                 </div>
-
+    
                 
-
+    
             
                 
+            </div>
+        </div>
+        <div class="d-flex flex-column gap-3">
+            <div class="container-form-delete">
+                <form action="" method="get">
+                    <div class="d-flex flex-column align-items-center justify-content-between container-login delete-client h-100 p-3"  >
+                        <h2 class="text-white">Delete Client</h2>
+                        
+                        <div class="d-flex flex-column justify-content-center align-items-center w-100 gap-2">
+                            <div class="d-flex flex-column">
+                                <label class="text-white" for="loginEmail">id:</label>
+                                <input id="loginEmail" type="number" v-model="idProduct" required>
+                            </div>
+                            
+                            
+                        </div>
+        
+                        <div class="d-flex justify-content-center my-3 w-100">
+                            <a @click.prevent class="ancorLogin" href="./index.html">
+                                <button class="button-64" role="button"><span class="text">Delete Client</span></button>
+                            </a>
+                        </div>
+                        
+                        
+                    </div>
+    
+                    
+    
+                </form>
+                
+            </div>
+            <div class="container-form-filter">
+                
+                    <div class="d-flex flex-column align-items-center justify-content-between container-card delete-client h-100 p-3"  >
+                        <h2 class="text-white">Search Client</h2>
+                        
+                        <div class="d-flex flex-column justify-content-center align-items-center w-100 gap-2">
+                            <table class="table">
+                                <thead class="text-white-bold">
+                                  <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">FirstName</th>
+                                    <th scope="col">LastName</th>
+                                    <th scope="col">Email</th>
+                                  </tr>
+                                </thead>
+                                <tbody class="text-white-bold">
+                                  <tr v-if="InputSearch.length > 0" v-for="client in clientFilter">
+                                    <th scope="row">{{client.id}}</th>
+                                    <td>{{client.firstName}}</td>
+                                    <td>{{client.lastName}}</td>
+                                    <td>{{client.email}}</td>
+                                  </tr>
+                                  
+                                  
+                                </tbody>
+                              </table>
+                            
+                            
+                        </div>
+        
+                        
+                        
+                        
+                    </div>
+    
+                    
+    
+                
+                    
+            </div>
         </div>
         </main>
         
