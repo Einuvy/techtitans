@@ -24,7 +24,6 @@ public class EcommerceApplication {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 
-
 	@Bean
 	public CommandLineRunner initData(CustomerRepository customerRepository,
 									  WalletRepository walletRepository,

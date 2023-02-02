@@ -19,7 +19,7 @@ public class Order {
 
     private Double total;
 
-    private String adress;
+    private String address;
 
     private String customerName;
 
@@ -39,14 +39,14 @@ public class Order {
     }
 
     public Order(Double total,
-                 String adress,
+                 String address,
                  String customerName,
                  String sellerIIBB,
                  String orderNumber,
                  LocalDateTime date,
                  String sellerCUIT) {
         this.total = total;
-        this.adress = adress;
+        this.address = address;
         this.customerName = customerName;
         this.sellerIIBB = sellerIIBB;
         this.orderNumber = orderNumber;
@@ -66,12 +66,12 @@ public class Order {
         this.total = total;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCustomerName() {
