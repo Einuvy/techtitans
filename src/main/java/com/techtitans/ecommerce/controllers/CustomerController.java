@@ -101,6 +101,14 @@ public class CustomerController {
         return new CustomerDTO(customerService.findCustomerByEmail(authentication.getName()));
     }
 
+    @DeleteMapping("/customers/current")
+    public void deleteCurrentCustomer(Authentication authentication){
+        Customer customer = customerService.findCustomerByEmail(authentication.getName());
+
+        walletService.deleteWalletById(customer.getWallet().getId());
+        customerService.deleteCustomerById(customer.getId());
+    }
+
     @PatchMapping("/customers/current/password")
     public ResponseEntity<?> changePassword(Authentication authentication,
                                             @RequestParam String newPassword,
