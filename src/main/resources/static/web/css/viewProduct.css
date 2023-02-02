@@ -606,7 +606,32 @@ ul li {
   cursor: pointer;
 }
 
+.ancor-product-categories {
+  text-decoration: none !important;
+}
 
+.product-recomended {
+  max-width: 240px !important;
+  width: 100% !important;
+}
+.product-recomended h4 {
+  width: 100% !important;
+}
+
+.product-recomended img{
+  max-width: 240px !important;
+  width: 100% !important;
+  max-height: 229px !important;
+  height: 220px !important;
+}
+
+
+.title-card {
+  width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
 
 .add-to-cart:active,
 .add-to-cart:hover {

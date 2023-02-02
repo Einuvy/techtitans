@@ -13,7 +13,8 @@ const product = createApp({
            productId: [],
            activeImage: "",
           productImages: [],
-          productCart: []
+          productCart: [],
+          productsCategorie: []
             
         }
     },
@@ -32,6 +33,7 @@ const product = createApp({
           this.productId = this.products.find(product => product.id == this.id)
           this.activeImage = this.productId.image[0]
           this.productImages = this.productId.image
+          this.productsCategorie = this.products.filter(product => product.categories[0] == this.productId.categories[0] ).slice(0, 3)
           console.log(this.products);
         }).catch(error => console.error(error))
       },
