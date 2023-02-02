@@ -494,6 +494,24 @@ form input:focus{
   margin-bottom:36px;
 }
 
+@media screen and (max-width: 1024px) {
+  .slider{
+    width: 768px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .slider{
+    width: 425px !important;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .slider{
+    width: 375px !important;
+  }
+}
+
 @media (max-width:767px) {
   .footer-dark .item.text {
     margin-bottom:0;
