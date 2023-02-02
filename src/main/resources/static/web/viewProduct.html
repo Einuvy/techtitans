@@ -39,7 +39,7 @@
                           Options
                         </a>
                         <ul class="dropdown-menu ul-style" aria-labelledby="navbarDropdown">
-                          <li>
+                          <li data-bs-toggle="modal" data-bs-target="#walletModal">
                             <a class="dropdown-item text-green-neon w-100 d-flex gap-2" href="#">
                               <span class="transactionHover">Wallet</span>
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
@@ -140,6 +140,49 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-modal-close" data-bs-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-modal-buy">Buy</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade modal-style-wallet" id="walletModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-style-radius">
+              <div class="modal-content modal-style-wallet modal-style-radius">
+                <div class="modal-header header-wallet text-white-bold">
+                  <h5 class="modal-title" id="exampleModalLabel">Wallet</h5>
+                  <button type="button" class=" btn-modal-close-x d-flex justify-content-center align-items-center" data-bs-dismiss="modal" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                    </svg>
+                  </button>
+                </div>
+                <div class="modal-body body-wallet text-white-bold d-flex w-100">
+                  <table class="table">
+                    <thead class="text-white-bold">
+                      <tr>
+                        <th scope="col">FirstName</th>
+                        <th scope="col">LastName</th>
+                        <th scope="col">amount</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-white-bold">
+                      <tr>
+                        <tr>
+                          <th scope="row">Pedro</th>
+                          <td>Vega</td>
+                          
+                          <td>$999</td>
+                          
+                        </tr>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                  
+                  
+                </div>
+                <div class="modal-footer header-wallet">
+                  <button type="button" class="btn btn-modal-close-wallet" data-bs-dismiss="modal">Close</button>
+                  
                 </div>
               </div>
             </div>
