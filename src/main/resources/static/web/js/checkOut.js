@@ -15,7 +15,6 @@ const products = createApp({
     created(){
         
         this.loadData()
-        
         if (localStorage.getItem("cart")) {
             this.productCart = JSON.parse(localStorage.getItem('cart'))
         }

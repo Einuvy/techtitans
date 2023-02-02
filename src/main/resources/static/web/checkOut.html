@@ -112,47 +112,49 @@
                 <div class="modal-dialog modal-style-radius">
                   <div class="modal-content modal-style modal-style-radius">
                     <div class="modal-header text-white-bold">
-                      <h5 class="modal-title" id="exampleModalLabel">Your Products</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">Checkout products</h5>
                       <button type="button" class=" btn-modal-close-x d-flex justify-content-center align-items-center" data-bs-dismiss="modal" aria-label="Close">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                           <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
                         </svg>
                       </button>
                     </div>
-                    <div class="modal-body text-white-bold d-flex w-100">
-                      <table class="table">
-                        <thead class="text-white-bold">
-                          <tr>
-                            <th scope="col">View</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Delete</th>
-                          </tr>
-                        </thead>
-                        <tbody class="text-white-bold">
-                          <tr v-for="product in productCart">
-                            <th scope="row">
-                            <figure>
-                                <img 
-                                v-bind:src="product.image[0]"
-                                alt="">
-                            </figure></th>
-                            <td>{{product.name}}</td>
-                            <td>x5</td>
-                            <td>${{product.price}}</td>
-                            <td>
+                    <div>
+                        <h6>Review you cart before purchase</h6>
+                        <div class="modal-body text-white-bold d-flex w-100">
+                            <table class="table">
+                                <thead class="text-white-bold">
+                                <tr>
+                                    <th scope="col">View</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody class="text-white-bold">
+                                <tr v-for="product in cart">
+                                    <th scope="row">
+                                    <figure>
+                                        <img 
+                                        v-bind:src="product.image[0]"
+                                        alt="">
+                                    </figure></th>
+                                    <td>{{product.name}}</td>
+                                    <td>x5</td>
+                                    <td>${{product.price}}</td>
+                                    <td>
+                                        
+                                        <svg @click="removeFromCart(product)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-x-fill" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM6.854 5.146a.5.5 0 1 0-.708.708L7.293 7 6.146 8.146a.5.5 0 1 0 .708.708L8 7.707l1.146 1.147a.5.5 0 1 0 .708-.708L8.707 7l1.147-1.146a.5.5 0 0 0-.708-.708L8 6.293 6.854 5.146z"/>
+                                        </svg>
+                                    </td>
+                                </tr>
                                 
-                                <svg @click="removeFromCart(product)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-x-fill" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM6.854 5.146a.5.5 0 1 0-.708.708L7.293 7 6.146 8.146a.5.5 0 1 0 .708.708L8 7.707l1.146 1.147a.5.5 0 1 0 .708-.708L8.707 7l1.147-1.146a.5.5 0 0 0-.708-.708L8 6.293 6.854 5.146z"/>
-                                </svg>
-                            </td>
-                          </tr>
-                          
-                        </tbody>
-                      </table>
-                      
-                      
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-modal-close" data-bs-dismiss="modal">Close</button>
