@@ -30,10 +30,10 @@
                     <div class="collapse navbar-collapse query-background gap-5" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5 ">
                             <li id="active" class="nav-item p-1 m-0">
-                                <a class="nav-link active text-green-neon m-0 " aria-current="page" href="#"> Home </a>
+                                <a class="nav-link active text-green-neon m-0 " aria-current="page" href="./index.html"> Home </a>
                             </li>
                             <li class="nav-item p-1">
-                                <a class="nav-link text-green-neon" href="#">Link</a>
+                                <a class="nav-link text-green-neon" href="./products.html">Products</a>
                             </li>
                             <li class="nav-item dropdown p-1">
                                 <a class="nav-link dropdown-toggle text-green-neon" href="#" id="navbarDropdown"
@@ -41,9 +41,14 @@
                                     Options
                                 </a>
                                 <ul class="dropdown-menu ul-style" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item text-green-neon" href="#"><span
-                                                class="transactionHover">por definir</span></a></li>
                                     <li>
+                                        <a class="dropdown-item text-green-neon w-100 d-flex gap-2" href="#">
+                                          <span class="transactionHover">Wallet</span>
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
+                                            <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+                                          </svg>
+                                        </a>
+                                      </li>
                                         <hr class="dropdown-divider">
                                     </li>
                                     <li><a class="dropdown-item text-green-neon " href="./settings.html"><span
@@ -99,7 +104,7 @@
                 </div>
             </nav>
         </header>
-        <main class="d-flex justify-content-center align-items-center">
+        <main class="d-flex flex-column justify-content-between align-items-center">
             <div class="modal fade modal-style" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-style-radius">
                   <div class="modal-content modal-style modal-style-radius">
@@ -153,19 +158,20 @@
                   </div>
                 </div>
               </div>
-            <div class="productCont">
-                <div class="d-flex flex-wrap filterCont justify-content-between gap-3">
-                    
-                    <div class="d-flex filter align-items-center justify-content-center gap-2">
-                        <h6>Filter:</h6>
-                        <select v-model="select" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                            <option class="formOption" selected>Category</option>
-                            <option class="formOption"  value="Keyboard">Keyboard</option>
-                            <option class="formOption"  value="GPU">GPU</option>
-                            <option class="formOption"  value="Mouse">Mouse</option>
-                        </select>
-                    </div>
+              <div class="d-flex flex-wrap filterCont justify-content-between align-items-end w-100 mt-4 gap-3">
+                  
+                  <div class="d-flex filter align-items-center w-100 justify-content-end me-2 gap-2">
+                      <h6 class="text-white-bold">Filter:</h6>
+                      <select v-model="select" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                          <option class="formOption text-white-bold" selected>Category</option>
+                          <option class="formOption text-white-bold"  value="Keyboard">Keyboard</option>
+                          <option class="formOption text-white-bold"  value="GPU">GPU</option>
+                          <option class="formOption text-white-bold"  value="Mouse">Mouse</option>
+                      </select>
+                  </div>
                 </div>
+                <h3 class="text-white-bold" v-if="productsFilter.length === 0">Product not found </h3>
+            <div class="productCont d-flex flex-column">
                 <div class="d-flex flex-wrap p-3 justify-content-center align items center gap-3">
                     <!-- card -->
                     <template v-for="product in productsFilter">
