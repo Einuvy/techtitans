@@ -32,7 +32,7 @@
                         <a class="nav-link active text-green-neon m-0 " aria-current="page" href="./web/index.html"> Home </a>
                       </li>
                       <li class="nav-item p-1">
-                        <a class="nav-link text-green-neon" href="#">Link</a>
+                        <a class="nav-link text-green-neon" href="#">Products</a>
                       </li>
                       <li class="nav-item dropdown p-1">
                         <a class="nav-link dropdown-toggle text-green-neon" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -177,8 +177,8 @@
                         </div>
         
                         <div class="d-flex justify-content-center my-3 w-100">
-                            <a @click.prevent class="ancorLogin" href="./index.html">
-                                <button class="button-64" role="button"><span class="text">Delete Client</span></button>
+                            <a @click.prevent="disableProduct" class="ancorLogin" href="./index.html">
+                                <button class="button-64" role="button"><span class="text">Delete Product</span></button>
                             </a>
                         </div>
                         
@@ -244,14 +244,14 @@
                         <div class="d-flex flex-column justify-content-center align-items-center w-100 gap-2">
                             <div class="d-flex flex-column">
                                 <label class="text-white" for="loginEmail">id:</label>
-                                <input id="loginEmail" type="number" v-model="idProduct" required>
+                                <input id="loginEmail" type="number" v-model="id" required>
                             </div>
                             
                             
                         </div>
         
                         <div class="d-flex justify-content-center my-3 w-100">
-                            <a @click.prevent class="ancorLogin" href="./index.html">
+                            <a @click.prevent="disableClient" class="ancorLogin" href="./index.html">
                                 <button class="button-64" role="button"><span class="text">Delete Client</span></button>
                             </a>
                         </div>

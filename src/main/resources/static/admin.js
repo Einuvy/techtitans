@@ -10,8 +10,8 @@ const admin = createApp({
          InputSearch: "",
          clientFilter: [],
          productFilter: [],
-         idProduct: "",
-         idClient: "",
+         idProduct: 0,
+         id: 0,
 
          //info add Product
          productName: "",
@@ -53,7 +53,7 @@ const admin = createApp({
         },
         disableClient() {
             Swal.fire({
-                    title: '¿Disable Client?',
+                    title: 'Disable Client?',
                     showDenyButton: true,
                     // showCancelButton: true,
                     confirmButtonText: 'Accept',
@@ -61,7 +61,7 @@ const admin = createApp({
                 })
                 .then((result) => {
                     if (result.isConfirmed) {
-                        axios.patch('/api/customers/current/disabled', `idClient=${this.idClient}`)
+                        axios.delete(`/api/customer/${this.id}`)
                                         .then(response => {
                                             Swal.fire('Client deactivated', '', 'success')
                                                 .then(result => {
@@ -79,7 +79,7 @@ const admin = createApp({
         },
         disableProduct() {
             Swal.fire({
-                    title: '¿Disable Product?',
+                    title: 'Disable Product?',
                     showDenyButton: true,
                     // showCancelButton: true,
                     confirmButtonText: 'Accept',
@@ -87,7 +87,7 @@ const admin = createApp({
                 })
                 .then((result) => {
                     if (result.isConfirmed) {
-                        axios.patch('/api/product/disabled', `idProduct=${this.idProduct}`)
+                        axios.delete(`/api/product/${this.idProduct}`)
                                         .then(response => {
                                             Swal.fire('Product deactivated', '', 'success')
                                                 .then(result => {
