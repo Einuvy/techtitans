@@ -94,9 +94,19 @@ header {
 .cart-nav {
   height: auto;
   color: #f0f9ff;
-  background-color: #640f6e;
+  background-color: transparent;
   border: none;
   padding: .5rem;
+}
+
+.btn:hover+.svgStroke path {
+  cursor: pointer;
+  animation: dash 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btn:hover {
+  font-size: 0.9rem;
+  color: white;
 }
 
 
@@ -573,35 +583,49 @@ ul li {
 
 
 .add-to-cart {
-  
+  align-items: center;
+  background-image: linear-gradient(90deg, rgb(109, 24, 121) 0%, rgb(128, 16, 161) 51%, rgb(169, 61, 231) 100%);;
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 10px 0px #581b4e;
+  box-sizing: border-box;
+  color: #ffffff;
   display: flex;
-  background: #3e3e3f;
-  color: #fff;
-  border: none;
-  border-radius: 0;
-  padding: 1.25rem 2.5rem;
-  font-size: 1rem;
-  text-transform: uppercase;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  
+  min-width: 10.6rem !important;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
   cursor: pointer;
-  transform: translateZ(0);
-  transition: color 0.3s ease;
-  letter-spacing: 0.0625rem;
 }
-.add-to-cart:hover::before {
-  transform: scaleX(1);
+
+
+
+.add-to-cart:active,
+.add-to-cart:hover {
+  outline: 0;
+  color: rgb(255, 255, 255);
+
 }
-.add-to-cart::before {
-  position: absolute;
-  content: "";
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #565657;
-  transform: scaleX(0);
-  transform-origin: 0 50%;
-  transition: transform 0.3s ease-out;
+
+.add-to-cart span {
+  background-color: rgba(5, 6, 45, 0.971);
+  padding: 16px 24px;
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.add-to-cart:hover span {
+  background: none;
 }
 
 

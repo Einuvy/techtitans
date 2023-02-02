@@ -27,17 +27,17 @@
                   <div class="collapse navbar-collapse query-background gap-5" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5 ">
                         <li id="active" class="nav-item p-1 m-0">
-                          <a class="nav-link active text-green-neon m-0 " aria-current="page" href="#"> Home </a>
+                          <a class="nav-link active text-green-neon m-0 " aria-current="page" href="./index.html"> Home </a>
                         </li>
                         <li class="nav-item p-1">
-                          <a class="nav-link text-green-neon" href="#">Link</a>
+                          <a class="nav-link text-green-neon" href="./products.html">Products</a>
                         </li>
                         <li class="nav-item dropdown p-1">
                           <a class="nav-link dropdown-toggle text-green-neon" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Options
                           </a>
                           <ul class="dropdown-menu ul-style" aria-labelledby="navbarDropdown">
-                            <li>
+                            <li data-bs-toggle="modal" data-bs-target="#walletModal">
                               <a class="dropdown-item text-green-neon w-100 d-flex gap-2" href="#">
                                 <span class="transactionHover">Wallet</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
@@ -108,17 +108,28 @@
                         <th scope="col">Name</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Price</th>
+                        <th scope="col">Delete</th>
                       </tr>
                     </thead>
                     <tbody class="text-white-bold">
                       <tr>
-                        <th scope="row">
-                        <figure>
-                          <img src="https://source.unsplash.com/W1yjvf5idqA" alt="">
-                        </figure></th>
-                        <td>Product</td>
-                        <td>x5</td>
-                        <td>$30</td>
+                        <tr v-for="product in productCart">
+                          <th scope="row">
+                          <figure>
+                              <img 
+                              v-bind:src="product.image[0]"
+                              alt="">
+                          </figure></th>
+                          <td>{{product.name}}</td>
+                          <td>x5</td>
+                          <td>${{product.price}}</td>
+                          <td>
+                              
+                              <svg @click="removeFromCart(product)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-x-fill" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM6.854 5.146a.5.5 0 1 0-.708.708L7.293 7 6.146 8.146a.5.5 0 1 0 .708.708L8 7.707l1.146 1.147a.5.5 0 1 0 .708-.708L8.707 7l1.147-1.146a.5.5 0 0 0-.708-.708L8 6.293 6.854 5.146z"/>
+                              </svg>
+                          </td>
+                        </tr>
                       </tr>
                       
                     </tbody>
@@ -129,6 +140,49 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-modal-close" data-bs-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-modal-buy">Buy</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade modal-style" id="walletModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-style-radius">
+              <div class="modal-content modal-style modal-style-radius">
+                <div class="modal-header text-white-bold">
+                  <h5 class="modal-title" id="exampleModalLabel">Wallet</h5>
+                  <button type="button" class=" btn-modal-close-x d-flex justify-content-center align-items-center" data-bs-dismiss="modal" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                    </svg>
+                  </button>
+                </div>
+                <div class="modal-body text-white-bold d-flex w-100">
+                  <table class="table">
+                    <thead class="text-white-bold">
+                      <tr>
+                        <th scope="col">FirstName</th>
+                        <th scope="col">LastName</th>
+                        <th scope="col">amount</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-white-bold">
+                      <tr>
+                        <tr>
+                          <th scope="row">Pedro</th>
+                          <td>Vega</td>
+                          
+                          <td>$999</td>
+                          
+                        </tr>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                  
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-modal-close" data-bs-dismiss="modal">Close</button>
+                  
                 </div>
               </div>
             </div>
