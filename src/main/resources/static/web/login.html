@@ -27,18 +27,19 @@
                         <div class="d-flex flex-column justify-content-center align-items-center w-100 gap-2">
                             <div class="d-flex flex-column">
                                 <label class="text-white" for="loginEmail">Email:</label>
-                                <input id="loginEmail" type="text">
+                                <input id="loginEmail" type="text" v-model="email">
                             </div>
                             <div class="d-flex flex-column">
                                 <label class="text-white" for="PasswordLogin">Password:</label>
-                                <input id="PasswordLogin" type="password">
+                                <input id="PasswordLogin" type="password" v-model="password">
                             </div>
                         </div>
         
-                        <div class="d-flex justify-content-center my-3 w-100">
+                        <div class="d-flex flex-column align-items-center gap-2 justify-content-center my-3 w-100">
                             <a @click.prevent class="ancorLogin" href="./index.html">
-                                <button class="button-64" role="button"><span class="text">Login</span></button>
+                                <button @click.stop.prevent="logIn()" class="button-64" role="button"><span class="text">Login</span></button>
                             </a>
+                            <p v-if="msg.length != 0" class="text-center rounded-3 text-white bg-danger">{{msg}}</p>
                         </div>
                         
                         <div class="form-check form-switch d-flex flex-column w-100 align-items-center text-center  p-0">
@@ -55,24 +56,26 @@
                         
                         <div class="d-flex flex-column gap-2">
                             <label class="text-white" for="First">First Name:</label>
-                            <input id="First" type="text">
+                            <input id="First" type="text" v-model="firstName">
                             <label class="text-white" for="Last">Last Name:</label>
-                            <input id="First" type="text">
+                            <input id="First" type="text" v-model="lastName">
                             <label class="text-white" for="Last">Phone Number:</label>
-                            <input id="Phone" type="number">
+                            <input id="Phone" type="number" v-model="phoneNumber">
                             <label class="text-white" for="Last">Address:</label>
-                            <input id="Last" type="text">
+                            <input id="Last" type="text" v-model="address">
                             <label class="text-white" for="email">Email:</label>
-                            <input id="email" type="text">
-                            <label class="text-white" for="Password">Password:</label>
-                            <input id="Password" type="password">
-                              
+                            <input id="email" type="text" v-model="email">
+                            <label class="text-white" for="Password">Birth date:</label>
+                            <input id="birthdate" type="date" v-model="birthDate"> 
+                            <label class="text-white" for="birthdate">Password:</label>
+                            <input id="Password" type="password" v-model="password">                            
                         </div>
         
                         
                         
-                        <div class="d-flex justify-content-center my-3">
-                            <button class="button-64" role="button"><span class="text">Sign Up</span></button>
+                        <div class="d-flex flex-column align-items-center gap-2 justify-content-center my-3">
+                            <button @click.stop.prevent="signUp()" class="button-64" role="button"><span class="text">Sign Up</span></button>
+                            <p v-if="msg.length != 0" class="text-center rounded-3 text-white bg-danger">{{msg}}</p>
                         </div>
 
                         <div class="form-check form-switch d-flex  p-0">
