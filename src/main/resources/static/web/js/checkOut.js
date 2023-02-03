@@ -10,13 +10,21 @@ const products = createApp({
           select: "Category",
           categories: [],
           productCart: [],
-          customer:[]
+          firstNameInput : '',
+          lastNameInput : '',
+          emailInput: '',
+          cityInput: '',
+          stateInput : '',
+          zipCodeInput: '',
+          streetNameInput: '',
+          streetNumberInput: '',
+          aptNumber: '',
+          agreeCheckbox: false,
+          arrayCliente : []
         }
     },
     created(){
-        
-        this.loadData()
-        
+        //this.loadData()
         if (localStorage.getItem("cart")) {
             this.productCart = JSON.parse(localStorage.getItem('cart'))
         }
@@ -29,10 +37,6 @@ const products = createApp({
               this.productsFilter = this.products
               console.log(this.products);
             }).catch(error => console.error(error))
-            axios.get("/api/customers/current")
-            .then(res=>this.customer=res.data)
-            .catch(err=>console.log(err))
-
         },
         addCart(product) {
             let alreadyInCart = this.productCart.find((item) => item.id === product.id)
@@ -57,16 +61,20 @@ const products = createApp({
         saveCartToLocalStorage() {
             localStorage.setItem("cart", JSON.stringify(this.productCart))
         },
-        logout() {
-            axios.post('/api/logout').then(response => {
-                window.location.href = './login.html'                
-            })
-        },
-        limitWords(content, limit) {
-            let words = content.trim().split(" ");
-            return words.length > limit ? words.slice(0, limit).join(" ") + "..." : content;
-          }  
-        
+        clientInfo(){
+            if(this.firstNameInput == '' || this.lastNameInput == '' || this.emailInput == '' || this.cityInput == '' || this.stateInput == '' || this.zipCodeInput == '' || this.streetNameInput == '' || this.streetNumberInput == '')
+            {
+                alert("Al required fields must be completed")
+            }else{
+                if(!this.agreeCheckbox){
+                    alert("Agree terms and conditions to continue")
+                }else{
+                    this.arrayCliente.push(this.firstNameInput,this.lastNameInput,this.emailInput,this.cityInput,this.stateInput,this.zipCodeInput,this.streetNameInput,this.streetNumberInput,this.aptNumber)
+                    localStorage.setItem("clientOrder", JSON.stringify(this.arrayCliente))
+                    window.location = ("./cardForm/pay.html")
+                }
+            }
+        }
             
     },
     computed: {
