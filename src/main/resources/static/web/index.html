@@ -19,7 +19,7 @@
         <header >
             <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark sticky carouselContainer nav">
                 <div class="container-fluid gap-5">
-                  <a class="navbar-brand text-green-neon" href=""><img style="width: 7rem;" src="./images/techLogo.png" alt=""></a>
+                  <a href="./index.html" class="navbar-brand text-green-neon" href=""><img style="width: 7rem;" src="./images/techLogo.png" alt=""></a>
                   <button class="navbar-toggler buttonNavar d-flex d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <div class=""></div>
                     <div class=""></div>
@@ -31,10 +31,20 @@
 
                         </li>
                         <li id="active" class="nav-item p-1 m-0">
-                          <a class="nav-link active text-green-neon m-0 " aria-current="page" href="#"> Home </a>
+                          <a class="nav-link active text-green-neon m-0 " aria-current="page" href="./index.html"> Home </a>
                         </li>
                         <li class="nav-item p-1">
                           <a class="nav-link text-green-neon" href="./products.html">Products</a>
+                        </li>
+                        <li v-if="customer.length==0" class="nav-item p-1">
+                          
+                          <a class="nav-link text-green-neon d-flex gap-2" href="./login.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+                              <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                            </svg>
+                            <span>Sign In</span> 
+                          </a>
                         </li>
                         <li v-if="customer.length!=0" class="nav-item dropdown p-1 d-flex">
                           <div class="accountIcon">
@@ -55,7 +65,7 @@
                             <li><a class="dropdown-item text-green-neon " href="./settings.html"><span class="transactionHover">Change Password</span> </a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li class="d-flex">
-                              <a class="dropdown-item text-green-neon w-100 d-flex gap-2" href="#">
+                              <a @click.prevent="logout" class="dropdown-item text-green-neon w-100 d-flex gap-2" href="#">
                                   <span class="transactionHover">Logout</span> 
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left text-white " viewBox="0 0 16 16">
                                       <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
