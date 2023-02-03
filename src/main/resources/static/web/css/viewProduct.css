@@ -326,6 +326,70 @@ form input:focus{
   opacity:0.8;
 }
 
+.icon-ancor{
+  filter: invert(1);
+  width: 40px;
+  height: 40px;
+  background-image: url(../images/linked-in-logo.png);
+  background-size: cover;
+}
+
+/* /////////////////////////////Socials tooltip///////////////////// */
+.ax-card li{
+  display:inline-flex;
+  width:42px;
+  height:42px;
+  justify-content:center;
+  align-items:center;
+  margin:20px;
+}
+.ax-card .cdbox{
+  position:relative;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  
+}
+.ax-card .cdbox:hover .tooltip{
+  opacity:1;
+  visibility:visible;
+  z-index:10;
+  width: 350px;
+}
+
+.tooltip {
+  opacity:0;
+  visibility:hidden;
+    transform: translate(-50%, -200%);
+    position: absolute;
+    color: #ffffff;
+    background-color: #000;
+    border-radius: 4px;
+    padding: 5px 0px;
+    z-index: -1;
+    width: 100%;
+    max-width: 100px;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+  transition:opacity 0.2s ease-in-out;
+}
+
+.tooltip:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-color: rgba(0, 0, 0, 1) rgba(0, 0, 0, 0);
+    border-style: solid;
+    border-width: 15px 15px 0;
+    bottom: -13px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 0;
+}
+
 @media screen and (max-width: 1024px) {
   .slider{
     width: 768px !important;
