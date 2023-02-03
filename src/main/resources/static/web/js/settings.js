@@ -15,6 +15,9 @@ const settings = createApp({
         axios.get("/api/customers/current")
             .then(res=>this.customer=res.data)
             .catch(err=>console.log(err))
+            if (localStorage.getItem("cart")) {
+                this.productCart = JSON.parse(localStorage.getItem('cart'))
+            }
         
     },
     methods: {
@@ -56,6 +59,19 @@ const settings = createApp({
                 window.location.href = './login.html'                
             })
         },
+        limitWords(content, limit) {
+            let words = content.trim().split(" ");
+            return words.length > limit ? words.slice(0, limit).join(" ") + "..." : content;
+        },
+        removeFromCart(product) {
+            const productIndex = this.productCart.findIndex(p => p.id === product.id);
+            if (productIndex === -1) return
+            this.productCart.splice(productIndex, 1)
+            this.saveCartToLocalStorage()
+        },
+          saveCartToLocalStorage() {
+            localStorage.setItem("cart", JSON.stringify(this.productCart))
+        },  
             
     },
     computed: {

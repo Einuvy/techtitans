@@ -52,7 +52,8 @@ const login = createApp({
                 this.msg=err.response.data.error
                 setTimeout(() => {this.msg=''}, 2000);
             })
-        }
+        },
+          
     },
     computed:{
 

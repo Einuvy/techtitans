@@ -147,8 +147,8 @@
                                 v-bind:src="product.image[0]"
                                 alt="">
                             </figure></th>
-                            <td>{{product.name}}</td>
-                            <td>x5</td>
+                            <td>{{ limitWords(titleShort, 5) }}</td>
+                            <td>x1</td>
                             <td>${{product.price}}</td>
                             <td>
                                 
@@ -164,8 +164,9 @@
                       
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-modal-close" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-modal-buy">Buy</button>
+                        <span class="text-white-bold" v-if="customer.length==0">Sign in to continue purchase</span>
+                        <button type="button" class="btn btn-modal-close" data-bs-dismiss="modal">Close</button>
+                        <button  v-if="customer.length!=0" type="button" class="btn btn-modal-buy">Buy</button>
                     </div>
                   </div>
                 </div>

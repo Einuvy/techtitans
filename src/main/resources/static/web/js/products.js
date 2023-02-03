@@ -61,6 +61,10 @@ const products = createApp({
                 window.location.href = './login.html'                
             })
         },
+        limitWords(content, limit) {
+            let words = content.trim().split(" ");
+            return words.length > limit ? words.slice(0, limit).join(" ") + "..." : content;
+          }  
         
             
     },
