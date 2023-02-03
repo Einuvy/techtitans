@@ -14,7 +14,8 @@ const product = createApp({
            activeImage: "",
           productImages: [],
           productCart: [],
-          productsCategorie: []
+          productsCategorie: [],
+          customer:[]
             
         }
     },
@@ -36,6 +37,9 @@ const product = createApp({
           this.productsCategorie = this.products.filter(product => product.categories[0] == this.productId.categories[0] ).slice(0, 3)
           console.log(this.products);
         }).catch(error => console.error(error))
+        axios.get("/api/customers/current")
+            .then(res=>rthis.customer=res.data)
+            .catch(err=>console.log(err))
       },
       changeImage(image) {
         this.activeImage = image;

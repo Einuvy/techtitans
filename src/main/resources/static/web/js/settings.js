@@ -8,10 +8,13 @@ const settings = createApp({
         emailVerification: "",
         currentPassword: "",
         newPassword: "",
+        customer:[]
         }
     },
     created(){
-        
+        axios.get("/api/customers/current")
+            .then(res=>rthis.customer=res.data)
+            .catch(err=>console.log(err))
         
     },
     methods: {

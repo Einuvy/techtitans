@@ -9,7 +9,8 @@ const products = createApp({
           searchInput: "",
           select: "Category",
           categories: [],
-          productCart: []
+          productCart: [],
+          customer:[]
         }
     },
     created(){
@@ -28,6 +29,9 @@ const products = createApp({
               this.productsFilter = this.products
               console.log(this.products);
             }).catch(error => console.error(error))
+            axios.get("/api/customers/current")
+            .then(res=>rthis.customer=res.data)
+            .catch(err=>console.log(err))
         },
         addCart(product) {
             let alreadyInCart = this.productCart.find((item) => item.id === product.id)

@@ -59,6 +59,13 @@ header {
   
 }
 
+.accountIcon{
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url(https://cdn.iconfinder.com/stored_data/847040/128/png?token=1675381445-Gb4ckM864TjWwI9kpajtldr6GuL%2FCasX9IdmCwS3elM%3D);
+  background-size: cover;
+}
+
 /* Settings */
 
 /* CSS */

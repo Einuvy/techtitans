@@ -270,13 +270,13 @@ header {
 .btnText{
   color: white;
   font-size: 1.5rem;
-  height: 2rem;
+  height: fit-content;
 }
 
 .titleScroll{
   display: block;
   text-decoration: none;
-  height: 4rem;
+  height: fit-content;
 }
 
 /* .scrollBtnCont{
@@ -285,11 +285,20 @@ header {
 } */
 
 .scrollIcon{
-  width: 100%;
-  height: 100%;
-  background: url(https://cdn.iconfinder.com/stored_data/842316/128/png?token=1675193511-qg8bX0rocxExEiUjlLTnK3EHzD96Va%2BCybDjPJA8EZY%3D) no-repeat 24px -16px;
-      background-size: 57px;
+  position: absolute;
+  z-index: 1;
+  width: 5rem;
+  height: 5rem;
+  background: url(https://cdn.iconfinder.com/stored_data/847024/128/png?token=1675380875-%2BHnZRv148T12HjI97%2Bcpl7cxJJVhFuiO%2Fay4Jon5ISg%3D)no-repeat 32px -15px;
+  background-size: 45px;
       
+}
+
+.accountIcon{
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url(https://cdn.iconfinder.com/stored_data/847040/128/png?token=1675381445-Gb4ckM864TjWwI9kpajtldr6GuL%2FCasX9IdmCwS3elM%3D);
+  background-size: cover;
 }
 
 .modal-style-radius {
