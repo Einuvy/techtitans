@@ -104,7 +104,7 @@ const pay = createApp({
                     "description" : this.clientOrderNameStorage
                 })
                .then( () => {    
-                imprimirPdf()           
+                this.imprimirPdf()           
                 setTimeout(() => { localStorage.clear() }, 500)
                 setTimeout(() => { window.location = ("/web/products.html") }, 1500)
                })
@@ -135,13 +135,13 @@ const pay = createApp({
       doc.setFontSize(18)
       doc.text("Components: ", 14, 50);
       doc.text("Total: ", 80, 50);
-      doc.text("-------------------------------", 14, 60)
-      doc.text("this.clientOrderAmountStorage ", 80, 60);
+      //doc.text("-----------------------------", 14, 60)
+      doc.text(this.clientOrderAmountStorage, 90, 60);
 
       for (var i = 0; i < products.length; i++) {
       
           doc.setFontSize(12)
-          doc.text((products[i].name.substring(0, 40)) + " - " +"$" + products[i].price, 14, 70 + (i * 10));
+          doc.text((products[i].name.substring(0, 40)) + " - " +"$" + products[i].price, 20, 70 + (i * 10));
       }
 
       doc.save("purchase.pdf");
