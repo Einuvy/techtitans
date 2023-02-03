@@ -4,7 +4,6 @@ import com.techtitans.ecommerce.dto.ProductDTO;
 import com.techtitans.ecommerce.dto.registerDTO.*;
 import com.techtitans.ecommerce.enums.ProductType;
 import com.techtitans.ecommerce.models.Product;
-import com.techtitans.ecommerce.services.implementations.CustomerServiceImplementation;
 import com.techtitans.ecommerce.services.implementations.ProductServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -237,28 +236,6 @@ public class ProductController {
         return new ResponseEntity<>("Case Creada uwu", HttpStatus.OK);
     }
 
-//    @PostMapping("/products/storage")
-//    public ResponseEntity<Object> registerStorage(@RequestBody StorageRegisterDTO storageRegisterDTO){
-//
-//        Set<String> categories = new HashSet<>();
-//        categories.add("Storage");
-//
-//        Product storage = new Product(storageRegisterDTO.getName(),
-//                storageRegisterDTO.getPrice(),
-//                storageRegisterDTO.getCode(),
-//                "Storage Type: " + storageRegisterDTO.getStorageType() + " - Storage Interface: " + storageRegisterDTO.getStorageInterface() +
-//                        " - RPM: " + storageRegisterDTO.getRpm(),
-//                getRandomNumber3(),
-//                storageRegisterDTO.getBrand(),
-//                categories,
-//                ProductType.STORAGE,
-//                storageRegisterDTO.getImg());
-//
-//        productService.saveProduct(storage);
-//
-//        return new ResponseEntity<>("Storage Creada uwu", HttpStatus.OK);
-//    }
-
     @PostMapping("/products/storage")
     public ResponseEntity<Object> registerKeyboard(@RequestBody KeyboardRegisterDTO keyboardRegisterDTO){
 
@@ -273,11 +250,54 @@ public class ProductController {
                 getRandomNumber3(),
                 keyboardRegisterDTO.getBrand(),
                 categories,
-                ProductType.STORAGE,
+                ProductType.KEYBOARD,
                 keyboardRegisterDTO.getImg());
 
         productService.saveProduct(keyboard);
 
         return new ResponseEntity<>("Keyboard Creada uwu", HttpStatus.OK);
+    }
+
+    @PostMapping("/products/processor")
+    public ResponseEntity<Object> registerProcessor(@RequestBody ProcessorRegisterDTO processorRegisterDTO){
+
+        Set<String> categories = new HashSet<>();
+        categories.add("Processor");
+
+        Product processor = new Product(processorRegisterDTO.getName(),
+                processorRegisterDTO.getPrice(),
+                processorRegisterDTO.getCode(),
+                "Socket: " + processorRegisterDTO.getSocketType() + " - Speed: " + processorRegisterDTO.getSpeed(),
+                getRandomNumber3(),
+                processorRegisterDTO.getBrand(),
+                categories,
+                ProductType.PROCESSOR,
+                processorRegisterDTO.getImg());
+
+        productService.saveProduct(processor);
+
+        return new ResponseEntity<>("Processor Creada uwu", HttpStatus.OK);
+    }
+
+    @PostMapping("/products/powersupply")
+    public ResponseEntity<Object> registerPowerSupply(@RequestBody PowerSupplyRegisterDTO powerSupplyRegisterDTO){
+
+        Set<String> categories = new HashSet<>();
+        categories.add("Power Supply");
+
+        Product powersupply = new Product(powerSupplyRegisterDTO.getName(),
+                powerSupplyRegisterDTO.getPrice(),
+                powerSupplyRegisterDTO.getCode(),
+                "Power: " + powerSupplyRegisterDTO.getPower() + " - Efficiency: " + powerSupplyRegisterDTO.getEfficiency()
+                        + " - Color: " + powerSupplyRegisterDTO.getColor(),
+                getRandomNumber3(),
+                powerSupplyRegisterDTO.getBrand(),
+                categories,
+                ProductType.POWER_SUPPLY,
+                powerSupplyRegisterDTO.getImg());
+
+        productService.saveProduct(powersupply);
+
+        return new ResponseEntity<>("Power Supply Creada uwu", HttpStatus.OK);
     }
 }

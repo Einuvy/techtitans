@@ -43,6 +43,18 @@ const products = createApp({
                 })
             } else {
                 this.productCart.push(product);
+               /*  Toastify({
+                    text: "Product added",
+                    duration: 1000,
+                    close: true,
+                    gravity: "bot",
+                    position: "left",
+                    stopOnFocus: true,
+                    style: {
+                        background: "linear-gradient(to right, #64d11b, #23c072)",
+                        "border-radius": "10px"
+                    },
+                }).showToast(); */
                 this.saveCartToLocalStorage()
             }
 

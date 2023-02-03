@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.techtitans.ecommerce.utils.RandomNumberUtils.getRandomNumber5;
@@ -124,10 +125,8 @@ public class CustomerController {
                                             @RequestParam String email) {
         Customer customer = customerService.findCustomerByEmail(authentication.getName());
 
-
         if (!(customer.getEmail().equals(email))) {
             return new ResponseEntity<>("Email incorrect",HttpStatus.FORBIDDEN);
-
         }
         if (passwordEncoder.matches(newPassword, customer.getPassword())) {
             return new ResponseEntity<>("You must enter a different password than the previous one",HttpStatus.FORBIDDEN);

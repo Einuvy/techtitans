@@ -28,7 +28,7 @@ public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {
         auth.userDetailsService(email -> {
             Customer customer = customerRepository.findByEmail(email);
 
-            if (customer != null || ! customer.getDeleted()){
+            if (customer != null || (! customer.getDeleted())){
                 if (customer.getEmail().contains("@admin")){
                     return new User(customer.getEmail(),
                             customer.getPassword(),

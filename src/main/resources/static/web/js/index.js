@@ -25,6 +25,7 @@ const index = createApp({
     methods: {
         
         loadData() {
+            console.log("Prueba")
 
             axios.get("/api/products")
             .then(res => {
@@ -34,7 +35,7 @@ const index = createApp({
             }).catch(error => console.error(error))
             axios.get("/api/customers/current")
             .then(res=>this.customer=res.data)
-            .catch(err=>console.log(err))
+            .catch(err=> err)
         },
         addCart(product) {
             let alreadyInCart = this.productCart.find((item) => item.id === product.id)
@@ -46,6 +47,18 @@ const index = createApp({
                 })
             } else {
                 this.productCart.push(product);
+               /*  Toastify({
+                    text: "Product added",
+                    duration: 1000,
+                    close: true,
+                    gravity: "bot",
+                    position: "left",
+                    stopOnFocus: true,
+                    style: {
+                        background: "linear-gradient(to right, #64d11b, #23c072)",
+                        "border-radius": "10px"
+                    },
+                }).showToast(); */
                 this.saveCartToLocalStorage()
             }
 

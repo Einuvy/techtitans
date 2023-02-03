@@ -47,6 +47,7 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .failureHandler((request, response, exception) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+                .failureHandler(((request, response, exception) -> response.sendRedirect("/web/login.html?login=false")))
                 .and()
                 .logout()
                 .logoutSuccessHandler(((request, response, authentication) -> {

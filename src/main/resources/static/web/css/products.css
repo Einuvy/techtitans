@@ -880,7 +880,9 @@ td {
     text-shadow: -3px -3px 0px #0546f8, 3px 3px 0px #00E6F6;
     clip-path: var(--slice-0);
 }
-
+.delete{
+  cursor: pointer;
+}
 .detailBtn:hover::after {
     animation: 1s glitch;
     animation-timing-function: steps(2, end);
