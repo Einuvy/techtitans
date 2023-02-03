@@ -159,7 +159,12 @@ const admin = createApp({
               this.categories.push(this.categoryPush)
               this.categoryPush = ''
             }
-          }
+        },
+        logout() {
+            axios.post('/api/logout').then(response => {
+                window.location.href = './web/login.html'                
+            })
+        },
         
             
     },

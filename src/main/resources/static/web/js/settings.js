@@ -28,7 +28,7 @@ const settings = createApp({
                 
                 if (result.isConfirmed) {
                     axios.patch(
-                                "/api/clients/customers/password",
+                                "/api/customers/current/password",
                                 `newPassword=${this.newPassword}&password=${this.currentPassword}&email=${this.emailVerification}`
                             )
                             .then(response => {
@@ -50,7 +50,12 @@ const settings = createApp({
         
                 
             })
-        }
+        },
+        logout() {
+            axios.post('/api/logout').then(response => {
+                window.location.href = './login.html'                
+            })
+        },
             
     },
     computed: {

@@ -59,6 +59,11 @@ const index = createApp({
         saveCartToLocalStorage() {
             localStorage.setItem("cart", JSON.stringify(this.productCart))
         },
+        logout() {
+            axios.post('/api/logout').then(response => {
+                window.location.href = './login.html'                
+            })
+        },
             
     },
     computed: {
