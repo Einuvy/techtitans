@@ -665,7 +665,12 @@ ul li {
   margin: 0;
 }
 
-
+.titleH1 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 5 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
 
 
 

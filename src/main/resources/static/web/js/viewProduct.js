@@ -5,6 +5,9 @@
 
 const {createApp} = Vue
 
+
+
+
 const product = createApp({
     data(){
         return {
@@ -15,7 +18,8 @@ const product = createApp({
           productImages: [],
           productCart: [],
           productsCategorie: [],
-          customer:[]
+          customer:[],
+          titleShort: ""
             
         }
     },
@@ -35,6 +39,7 @@ const product = createApp({
           this.activeImage = this.productId.image[0]
           this.productImages = this.productId.image
           this.productsCategorie = this.products.filter(product => product.categories[0] == this.productId.categories[0] ).slice(0, 3)
+          this.titleShort = this.productId.name
           console.log(this.products);
         }).catch(error => console.error(error))
         axios.get("/api/customers/current")
@@ -70,15 +75,19 @@ const product = createApp({
     logout() {
       axios.post('/api/logout').then(response => {
           window.location.href = './login.html'                
-      })
+    })
   },
-      
+  limitWords(content, limit) {
+    let words = content.trim().split(" ");
+    return words.length > limit ? words.slice(0, limit).join(" ") + "..." : content;
+  }  
             
     },
     computed: {
 
     }
-})
+});
 
 
-product.mount('#product')
+
+product.mount('#product');

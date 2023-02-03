@@ -11,6 +11,7 @@
     crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./css/viewProduct.css" />
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
     <title>Product</title>
 </head>
 <body>
@@ -28,7 +29,7 @@
                   </button>
                   <div class="collapse navbar-collapse query-background gap-5" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5 ">
-                      <li id="active" class="nav-item p-1 m-0">
+                      <li  class="nav-item p-1 m-0">
                         <a class="nav-link text-green-neon m-0 "  href="./index.html"> Home </a>
                       </li>
                       <li class="nav-item p-1">
@@ -218,8 +219,8 @@
                 </div>
                 <div class="d-flex flex-column justify-content-between w-100 w-md-50 container-info-product flex-wrap">
                   <div class="container-info d-flex flex-column w-100 flex-wrap text-break-css">
-                    <h1 class="description ancor-footer">{{productId.name}}</h1>
-                    <h2 class="description ancor-footer">{{productId.price}}</h2>
+                    <h1 class="description  ancor-footer" >{{ limitWords(titleShort, 5) }}</h1>
+                    <h2 class="description ancor-footer">${{productId.price}}</h2>
                     <div class="description ancor-footer d-flex flex-column flex-wrap text-break-css ">
                       <p class="d-flex flex-wrap text-break-css">Stock: {{productId.stock}}</p>
                       <p class="d-flex flex-wrap text-break-css">Brand: {{productId.brand}}</p>
