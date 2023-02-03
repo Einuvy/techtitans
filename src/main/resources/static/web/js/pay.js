@@ -130,13 +130,13 @@ const pay = createApp({
       let doc = new jsPDF();
 
       doc.text("To client: ", 10, 18)
-      doc.text("this.clientNameOnly", 40, 18)
+      doc.text(this.clientNameOnly, 40, 18)
       
       doc.setFontSize(18)
       doc.text("Components: ", 14, 50);
       doc.text("Total: ", 80, 50);
-      //doc.text("-----------------------------", 14, 60)
-      doc.text(this.clientOrderAmountStorage, 90, 60);
+      doc.text("-----------------------------", 14, 60)
+      doc.text("$"+this.clientOrderAmountStorage, 100, 50);
 
       for (var i = 0; i < products.length; i++) {
       
