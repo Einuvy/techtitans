@@ -83,7 +83,7 @@ const products = createApp({
     computed: {
         search() {
             const filterCategory = this.products.filter(product => product.categories[0].includes(this.select) || this.select === "Category") 
-            //this.productsFilter = filterCategory.filter(product => product.name.toLowerCase().trim().includes(this.searchInput.toLowerCase().trim()))
+            this.productsFilter = filterCategory.filter(product => product.name.toLowerCase().trim().includes(this.searchInput.toLowerCase().trim()))
         }
     }
 })
