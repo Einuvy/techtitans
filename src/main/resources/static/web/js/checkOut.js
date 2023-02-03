@@ -1,5 +1,4 @@
 const {createApp} = Vue
-
 const products = createApp({
     data(){
         return {
@@ -78,10 +77,11 @@ const products = createApp({
                     localStorage.setItem("clientOrderAmount", JSON.stringify(sumaProductos))
                     localStorage.setItem("clientOrderName", JSON.stringify(nombreProductos))
                     localStorage.setItem("clientOrder", JSON.stringify(this.arrayCliente))
+                    localStorage.setItem("onlyClientName",JSON.stringify(this.firstNameInput))
                     window.location = ("./pay.html")
                 }
             }
-        }
+        },
             
     },
     computed: {

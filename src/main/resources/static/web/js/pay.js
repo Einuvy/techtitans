@@ -22,7 +22,8 @@ const pay = createApp({
         isInputFocused: false,
         clientOrderStorage: '',
         clientOrderAmountStorage: '',
-        clientOrderNameStorage: ''
+        clientOrderNameStorage: '',
+        clientNameOnly: ''
       };
     },
     mounted() {
@@ -74,24 +75,39 @@ const pay = createApp({
       formatNumber() {
         this.cardNumberFormatted = this.cardNumber.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim();
       },
+      imprimirPdf(){
+        this.productCart = JSON.parse(localStorage.getItem('cart'))
+        let products = this.productCart
+        let doc = new jsPDF();
+
+        doc.text("Lista de productos", 14, 22);
+
+        for (var i = 0; i < products.length; i++) {
+          doc.text(products[i].name + " - " + products[i].price, 14, 30 + (i * 10));
+        }
+
+        doc.save("products.pdf");
+      },
       confirmPay(){
           this.formatNumber()
           this.clientOrderStorage = localStorage.getItem('clientOrder')
           this.clientOrderAmountStorage = localStorage.getItem('clientOrderAmount')
           this.clientOrderNameStorage = localStorage.getItem('clientOrderName')
-          console.log(this.clientOrderStorage)
+          this.clientNameOnly = localStorage.getItem('onlyClientName')
             if(this.cardNumber.number == ''){
                 alert("Card number empty")
             }else{
                 axios.post('https://homebankingmbb.up.railway.app/api/pay',{
                     "amount" : this.clientOrderAmountStorage,
                     "cvv" : this.cardCvv,
-                    "cardNumber" : "3493 8196 4687 1802",
+                    "cardNumber" : this.cardNumberFormatted,
                     "description" : this.clientOrderNameStorage
                 })
-               .then( () => {               
-                localStorage.clear()  
-                setTimeout(() => { window.location = ("/web/products.html") }, 1500) })
+               .then( () => {    
+                imprimirPdf()           
+                setTimeout(() => { localStorage.clear() }, 500)
+                setTimeout(() => { window.location = ("/web/products.html") }, 1500)
+               })
                 .catch(function (error) {
                     if (error.response) {
                       alert("Something go wrong" + error.response.data);
@@ -105,6 +121,31 @@ const pay = createApp({
                     }
                   });
             }
+    },
+    imprimirPdf(){
+      this.productCart = JSON.parse(localStorage.getItem('cart'))
+      if(this.productCart.length > 0)
+      {
+      let products = this.productCart
+      let doc = new jsPDF();
+
+      doc.text("To client: ", 10, 18)
+      doc.text("this.clientNameOnly", 40, 18)
+      
+      doc.setFontSize(18)
+      doc.text("Components: ", 14, 50);
+      doc.text("Total: ", 80, 50);
+      doc.text("-------------------------------", 14, 60)
+      doc.text("this.clientOrderAmountStorage ", 80, 60);
+
+      for (var i = 0; i < products.length; i++) {
+      
+          doc.setFontSize(12)
+          doc.text((products[i].name.substring(0, 40)) + " - " +"$" + products[i].price, 14, 70 + (i * 10));
+      }
+
+      doc.save("purchase.pdf");
+      }
     },
     }
   });
