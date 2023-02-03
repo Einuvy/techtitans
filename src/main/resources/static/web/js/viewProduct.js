@@ -38,7 +38,7 @@ const product = createApp({
           console.log(this.products);
         }).catch(error => console.error(error))
         axios.get("/api/customers/current")
-            .then(res=>rthis.customer=res.data)
+            .then(res=>this.customer=res.data)
             .catch(err=>console.log(err))
       },
       changeImage(image) {

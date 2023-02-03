@@ -13,7 +13,7 @@ const settings = createApp({
     },
     created(){
         axios.get("/api/customers/current")
-            .then(res=>rthis.customer=res.data)
+            .then(res=>this.customer=res.data)
             .catch(err=>console.log(err))
         
     },
