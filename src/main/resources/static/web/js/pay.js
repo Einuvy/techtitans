@@ -20,7 +20,8 @@ const pay = createApp({
         isCardFlipped: false,
         focusElementStyle: null,
         isInputFocused: false,
-        clientOrderStorage: ''
+        clientOrderStorage: '',
+        clientOrderAmountStorage: ''
       };
     },
     mounted() {
@@ -28,23 +29,7 @@ const pay = createApp({
       document.getElementById("cardNumber").focus();
     },
     computed: {
-      getCardType() {
-        // let number = this.cardNumber;
-        // let re = new RegExp("^4");
-        // if (number.match(re) != null) return "visa";
-  
-        // re = new RegExp("^(34|37)");
-        // if (number.match(re) != null) return "amex";
-  
-        // re = new RegExp("^5[1-5]");
-        // if (number.match(re) != null) return "mastercard";
-  
-        // re = new RegExp("^6011");
-        // if (number.match(re) != null) return "discover";
-  
-        // re = new RegExp("^9792");
-        // if (number.match(re) != null) return "troy";
-  
+      getCardType() {  
         return "visa"; // default type
       },
       generateCardNumberMask() {
@@ -91,12 +76,13 @@ const pay = createApp({
       confirmPay(){
           this.formatNumber()
           this.clientOrderStorage = localStorage.getItem('clientOrder')
+          this.clientOrderAmountStorage = localStorage.getItem('clientOrderAmount')
           console.log(this.clientOrderStorage)
             if(this.cardNumber.number == ''){
                 alert("Card number empty")
             }else{
                 axios.post('https://homebankingmbb.up.railway.app/api/pay',{
-                    "amount" : 200,
+                    "amount" : this.clientOrderAmountStorage,
                     "cvv" : this.cardCvv,
                     "cardNumber" : "3493 8196 4687 1802",
                     "description" : this.clientOrderStorage

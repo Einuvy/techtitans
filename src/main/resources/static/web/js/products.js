@@ -61,17 +61,17 @@ const products = createApp({
                 window.location.href = './login.html'                
             })
         },
-        limitWords(content, limit) {
-            let words = content.trim().split(" ");
-            return words.length > limit ? words.slice(0, limit).join(" ") + "..." : content;
-          }  
+        // limitWords(content, limit) {
+        //     let words = content.trim().split(" ");
+        //     return words.length > limit ? words.slice(0, limit).join(" ") + "..." : content;
+        //   }  
         
             
     },
     computed: {
         search() {
             const filterCategory = this.products.filter(product => product.categories[0].includes(this.select) || this.select === "Category") 
-            this.productsFilter = filterCategory.filter(product => product.name.toLowerCase().trim().includes(this.searchInput.toLowerCase().trim()))
+            //this.productsFilter = filterCategory.filter(product => product.name.toLowerCase().trim().includes(this.searchInput.toLowerCase().trim()))
         }
     }
 })

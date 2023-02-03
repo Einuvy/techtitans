@@ -6,6 +6,7 @@ const products = createApp({
           login: true, 
           products: [],
           productsFilter: [],
+          customer:[],
           searchInput: "",
           select: "Category",
           categories: [],
@@ -70,8 +71,11 @@ const products = createApp({
                     alert("Agree terms and conditions to continue")
                 }else{
                     this.arrayCliente.push(this.firstNameInput,this.lastNameInput,this.emailInput,this.cityInput,this.stateInput,this.zipCodeInput,this.streetNameInput,this.streetNumberInput,this.aptNumber)
+                    let sumaProductos = this.productCart.reduce((sum, item) => sum + item.price, 0);
+                    console.log(sumaProductos);
+                    localStorage.setItem("clientOrderAmount", JSON.stringify(sumaProductos))
                     localStorage.setItem("clientOrder", JSON.stringify(this.arrayCliente))
-                    window.location = ("./cardForm/pay.html")
+                    window.location = ("./pay.html")
                 }
             }
         }

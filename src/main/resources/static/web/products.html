@@ -146,7 +146,8 @@
                                 v-bind:src="product.image[0]"
                                 alt="">
                             </figure></th>
-                            <td>{{ limitWords(titleShort, 5) }}</td>
+                            <!-- <td>{{ limitWords(titleShort, 5) }}</td> -->
+                            <td>{{product.name.slice(0,35)}}...</td>
                             <td>x1</td>
                             <td>${{product.price}}</td>
                             <td>
@@ -165,7 +166,7 @@
                     <div class="modal-footer">
                       <span class="text-white-bold" v-if="customer.length==0">Sign in to continue purchase</span>
                   <button type="button" class="btn btn-modal-close" data-bs-dismiss="modal">Close</button>
-                  <button  v-if="customer.length!=0" type="button" class="btn btn-modal-buy">Buy</button>
+                  <a href="./checkOut.html"><button v-if="customer.length!=0" type="button" class="btn btn-modal-buy">Buy</button></a>
                     </div>
                   </div>
                 </div>
@@ -236,7 +237,6 @@
                                     <img v-bind:src="product.image[0]"
                                         alt="">
                                 </div>
-                                
                                     <div class="cardBody d-flex flex-column align-items-center justify-content-between">
                                         <h4 class="title-card">{{product.name}}</h4>
                                         <table class="w-100">
@@ -258,10 +258,9 @@
                                         <div class="w-100 d-flex justify-content-between pt-3">
                                             <!-- button with links -->
                                             <a :href="'./viewProduct.html?id='+ product.id" class="detailBtn d-flex align-items-center justify-content-center">VIEW DETAILS</a>
-                                            <a @click="addCart(product)" class="detailBtn d-flex align-items-center justify-content-center">ADD TO KART</a>
+                                            <a @click="addCart(product)" class="detailBtn d-flex align-items-center justify-content-center">ADD TO CART</a>
                                         </div>
                                     </div>
-                                
                             </div>
                         </div>                       
                     </template>       
