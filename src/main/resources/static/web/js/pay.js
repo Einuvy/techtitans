@@ -21,7 +21,8 @@ const pay = createApp({
         focusElementStyle: null,
         isInputFocused: false,
         clientOrderStorage: '',
-        clientOrderAmountStorage: ''
+        clientOrderAmountStorage: '',
+        clientOrderNameStorage: ''
       };
     },
     mounted() {
@@ -77,6 +78,7 @@ const pay = createApp({
           this.formatNumber()
           this.clientOrderStorage = localStorage.getItem('clientOrder')
           this.clientOrderAmountStorage = localStorage.getItem('clientOrderAmount')
+          this.clientOrderNameStorage = localStorage.getItem('clientOrderName')
           console.log(this.clientOrderStorage)
             if(this.cardNumber.number == ''){
                 alert("Card number empty")
@@ -85,7 +87,7 @@ const pay = createApp({
                     "amount" : this.clientOrderAmountStorage,
                     "cvv" : this.cardCvv,
                     "cardNumber" : "3493 8196 4687 1802",
-                    "description" : this.clientOrderStorage
+                    "description" : this.clientOrderNameStorage
                 })
                .then( () => {               
                 localStorage.clear()  

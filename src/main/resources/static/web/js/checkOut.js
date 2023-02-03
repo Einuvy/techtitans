@@ -72,8 +72,11 @@ const products = createApp({
                 }else{
                     this.arrayCliente.push(this.firstNameInput,this.lastNameInput,this.emailInput,this.cityInput,this.stateInput,this.zipCodeInput,this.streetNameInput,this.streetNumberInput,this.aptNumber)
                     let sumaProductos = this.productCart.reduce((sum, item) => sum + item.price, 0);
-                    console.log(sumaProductos);
+                    let nombreProductos = this.productCart.map(str => str.name.substring(0, 20) + '...## ').join('');
+                    //let nombreProductos = this.productCart.reduce((sum, item) => sum + item.name.slice(15),'');
+                    console.log(nombreProductos);
                     localStorage.setItem("clientOrderAmount", JSON.stringify(sumaProductos))
+                    localStorage.setItem("clientOrderName", JSON.stringify(nombreProductos))
                     localStorage.setItem("clientOrder", JSON.stringify(this.arrayCliente))
                     window.location = ("./pay.html")
                 }
