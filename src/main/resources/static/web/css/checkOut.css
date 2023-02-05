@@ -756,6 +756,7 @@ td {
 }
 .backgroundCheckout{
   background-color: #00000095;
+  min-height: 75vh!important;
 }
 .backgroundCheckout input{
   background-color: #00000029;

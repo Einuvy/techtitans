@@ -37,7 +37,6 @@
                 <a class="nav-link text-green-neon active" aria-current="page" href="#">Products</a>
               </li>
               <li v-if="customer.length==0" class="nav-item p-1">
-
                 <a class="nav-link text-green-neon d-flex gap-2" href="./login.html">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
@@ -251,7 +250,7 @@
           <template v-for="product in productsFilter">
             <div class="cardBorder">
               <div class="cardCont">
-                <div class="cardImage">
+                <div>
                   <img v-bind:src="product.image[0]" alt="">
                 </div>
                 <div class="cardBody d-flex flex-column align-items-center justify-content-between">

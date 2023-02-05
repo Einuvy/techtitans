@@ -40,6 +40,9 @@ const pay = createApp({
       minCardMonth() {
         if (this.cardYear === this.minCardYear) return new Date().getMonth() + 1;
         return 1;
+      },
+      mostrar(){
+        console.log(this.cardMonth)
       }
     },
     watch: {
@@ -94,6 +97,7 @@ const pay = createApp({
           this.clientOrderAmountStorage = localStorage.getItem('clientOrderAmount')
           this.clientOrderNameStorage = localStorage.getItem('clientOrderName')
           this.clientNameOnly = localStorage.getItem('onlyClientName')
+          
             if(this.cardNumber.number == ''){
                 alert("Card number empty")
             }else{
@@ -110,7 +114,7 @@ const pay = createApp({
                })
                 .catch(function (error) {
                     if (error.response) {
-                      alert("Something go wrong" + error.response.data);
+                      alert("Something go wrong " + error.response.data);
                       console.log(error.response.data);
                       console.log(error.response.status);
                       console.log(error.response.headers);

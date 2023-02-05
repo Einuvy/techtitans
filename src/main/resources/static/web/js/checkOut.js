@@ -24,7 +24,7 @@ const products = createApp({
         }
     },
     created(){
-        //this.loadData()
+        this.loadData()
         if (localStorage.getItem("cart")) {
             this.productCart = JSON.parse(localStorage.getItem('cart'))
         }
@@ -37,6 +37,9 @@ const products = createApp({
               this.productsFilter = this.products
               console.log(this.products);
             }).catch(error => console.error(error))
+            axios.get("/api/customers/current")
+            .then(res=>this.customer=res.data)
+            .catch(err=>console.log(err))
         },
         addCart(product) {
             let alreadyInCart = this.productCart.find((item) => item.id === product.id)
@@ -65,22 +68,28 @@ const products = createApp({
             if(this.firstNameInput == '' || this.lastNameInput == '' || this.emailInput == '' || this.cityInput == '' || this.stateInput == '' || this.zipCodeInput == '' || this.streetNameInput == '' || this.streetNumberInput == '')
             {
                 alert("Al required fields must be completed")
-            }else{
-                if(!this.agreeCheckbox){
-                    alert("Agree terms and conditions to continue")
-                }else{
-                    this.arrayCliente.push(this.firstNameInput,this.lastNameInput,this.emailInput,this.cityInput,this.stateInput,this.zipCodeInput,this.streetNameInput,this.streetNumberInput,this.aptNumber)
-                    let sumaProductos = this.productCart.reduce((sum, item) => sum + item.price, 0);
-                    let nombreProductos = this.productCart.map(str => str.name.substring(0, 20) + '...## ').join('');
-                    //let nombreProductos = this.productCart.reduce((sum, item) => sum + item.name.slice(15),'');
-                    console.log(nombreProductos);
-                    localStorage.setItem("clientOrderAmount", JSON.stringify(sumaProductos))
-                    localStorage.setItem("clientOrderName", JSON.stringify(nombreProductos))
-                    localStorage.setItem("clientOrder", JSON.stringify(this.arrayCliente))
-                    localStorage.setItem("onlyClientName",JSON.stringify(this.firstNameInput))
-                    window.location = ("./pay.html")
+            }else if(this.productCart.length == 0)
+                {
+                    alert("No product in your shopping cart")
                 }
-            }
+                else{
+                    if(!this.agreeCheckbox)
+                        {
+                            alert("Agree terms and conditions to continue")
+                        }else
+                            {
+                                this.arrayCliente.push(this.firstNameInput,this.lastNameInput,this.emailInput,this.cityInput,this.stateInput,this.zipCodeInput,this.streetNameInput,this.streetNumberInput,this.aptNumber)
+                                let sumaProductos = this.productCart.reduce((sum, item) => sum + item.price, 0);
+                                let nombreProductos = this.productCart.map(str => str.name.substring(0, 20) + '...## ').join('');
+                                //let nombreProductos = this.productCart.reduce((sum, item) => sum + item.name.slice(15),'');
+                                console.log(nombreProductos);
+                                localStorage.setItem("clientOrderAmount", JSON.stringify(sumaProductos))
+                                localStorage.setItem("clientOrderName", JSON.stringify(nombreProductos))
+                                localStorage.setItem("clientOrder", JSON.stringify(this.arrayCliente))
+                                localStorage.setItem("onlyClientName",JSON.stringify(this.firstNameInput))
+                                window.location = ("./pay.html")
+                            }
+                    }
         },
             
     },
